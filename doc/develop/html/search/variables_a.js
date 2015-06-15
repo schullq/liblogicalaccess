@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['keepiv',['keepIV',['../structlogicalaccess_1_1s__SETAV1.html#a15731671ca56e865b458dec37b8726fe',1,'logicalaccess::s_SETAV1::keepIV()'],['../structlogicalaccess_1_1s__SETAV2.html#ac466ade74b9bea9465561355fa7be4f4',1,'logicalaccess::s_SETAV2::keepIV()']]],
+  ['key',['key',['../classlogicalaccess_1_1MifareUltralightCAccessInfo.html#a0f190e48415a55775a208acb2622c80d',1,'logicalaccess::MifareUltralightCAccessInfo']]],
+  ['key_5fno_5fv_5fcek',['key_no_v_cek',['../structlogicalaccess_1_1s__KeyEntryUpdateSettings.html#a7999ee76898b9c13ca2c25607cd24abc',1,'logicalaccess::s_KeyEntryUpdateSettings']]],
+  ['keya',['keyA',['../classlogicalaccess_1_1MifareAccessInfo.html#a06e36862a6a18daf1dac3674c5daa88a',1,'logicalaccess::MifareAccessInfo::keyA()'],['../classlogicalaccess_1_1MifarePlusAccessInfo.html#ac14f9914a4490f40408d6a10d441860d',1,'logicalaccess::MifarePlusAccessInfo::keyA()']]],
+  ['keyauthenticatesl1aes',['keyAuthenticateSL1AES',['../classlogicalaccess_1_1MifarePlusAccessInfo.html#a88780d2e231a2f1aa3be3cb27c35b4f1',1,'logicalaccess::MifarePlusAccessInfo']]],
+  ['keyb',['keyB',['../classlogicalaccess_1_1MifareAccessInfo.html#a4927c04d491bf3da30e6d98adf076602',1,'logicalaccess::MifareAccessInfo::keyB()'],['../classlogicalaccess_1_1MifarePlusAccessInfo.html#a94fbe8c911dc25391cca2311efafaee8',1,'logicalaccess::MifarePlusAccessInfo::keyB()']]],
+  ['keyboardlayout',['keyboardLayout',['../structlogicalaccess_1_1KeyboardSharedStruct.html#af694cabf0e7ff06498db3252fbd625d5',1,'logicalaccess::KeyboardSharedStruct']]],
+  ['keyclass',['keyclass',['../structlogicalaccess_1_1s__EXTSET.html#aa7b8d35b39fecf475b1b87100c4801dc',1,'logicalaccess::s_EXTSET']]],
+  ['keyconfiguration',['keyConfiguration',['../classlogicalaccess_1_1MifarePlusAccessInfo.html#a63f620a9f4d368be6d8962abaeca9ee9',1,'logicalaccess::MifarePlusAccessInfo']]],
+  ['keymastercard',['keyMastercard',['../classlogicalaccess_1_1MifarePlusAccessInfo.html#a3cf7d2581ff5ac79cafb017dee18a0f2',1,'logicalaccess::MifarePlusAccessInfo']]],
+  ['keynockuc',['keynockuc',['../structlogicalaccess_1_1s__KucEntryUpdateSettings.html#af82319e02e5704ba18ac73058d32d07f',1,'logicalaccess::s_KucEntryUpdateSettings::keynockuc()'],['../structlogicalaccess_1_1s__SAMKUCEntry.html#a0168b856f0ea4af276c0f1ca335b89f2',1,'logicalaccess::s_SAMKUCEntry::keynockuc()']]],
+  ['keyoriginality',['keyOriginality',['../classlogicalaccess_1_1MifarePlusAccessInfo.html#af0afcc32dfc009c39731c5847d7ca49f',1,'logicalaccess::MifarePlusAccessInfo']]],
+  ['keysize',['keysize',['../structltc__cipher__descriptor.html#a7a99e373f047ea2cb6de239ed7a4b35a',1,'ltc_cipher_descriptor']]],
+  ['keyswitchl2',['keySwitchL2',['../classlogicalaccess_1_1MifarePlusAccessInfo.html#a330c8340b85b90d44be990eb13339686',1,'logicalaccess::MifarePlusAccessInfo']]],
+  ['keyswitchl3',['keySwitchL3',['../classlogicalaccess_1_1MifarePlusAccessInfo.html#a6f37003ceb3fe8bd29326b78a35218f3',1,'logicalaccess::MifarePlusAccessInfo']]],
+  ['keytype',['keytype',['../structlogicalaccess_1_1s__SETAV1.html#ac17c32a8d713d62edbf94607618d35cb',1,'logicalaccess::s_SETAV1::keytype()'],['../structlogicalaccess_1_1s__SETAV2.html#a5e4a6385e4279dc9fa750ece96c42f2b',1,'logicalaccess::s_SETAV2::keytype()']]],
+  ['keyva',['keyVa',['../structlogicalaccess_1_1s__KeyEntryUpdateSettings.html#ad2d4998c063658e77e893835d66f3d3c',1,'logicalaccess::s_KeyEntryUpdateSettings']]],
+  ['keyvb',['keyVb',['../structlogicalaccess_1_1s__KeyEntryUpdateSettings.html#a7de4ec932733e654dfc97cda2d7a19f1',1,'logicalaccess::s_KeyEntryUpdateSettings']]],
+  ['keyvc',['keyVc',['../structlogicalaccess_1_1s__KeyEntryUpdateSettings.html#aad190a8a990dc3e6d1f40811ca81d39d',1,'logicalaccess::s_KeyEntryUpdateSettings']]],
+  ['keyvckuc',['keyvckuc',['../structlogicalaccess_1_1s__KucEntryUpdateSettings.html#a2de25dafa3b4cd19e4484cc96b64a32d',1,'logicalaccess::s_KucEntryUpdateSettings::keyvckuc()'],['../structlogicalaccess_1_1s__SAMKUCEntry.html#ae4772147b27e6937448d596bb8ac6b3e',1,'logicalaccess::s_SAMKUCEntry::keyvckuc()']]],
+  ['keyversionsentseparatly',['keyversionsentseparatly',['../structlogicalaccess_1_1s__KeyEntryUpdateSettings.html#a80f998f4f24a8b9eb196dd59458f4822',1,'logicalaccess::s_KeyEntryUpdateSettings']]],
+  ['klayout',['klayout',['../islogkbdhook_8cpp.html#aedbc45e9e40a3345cbe79fe7ab2af2c6',1,'islogkbdhook.cpp']]],
+  ['kuc',['kuc',['../structlogicalaccess_1_1s__KeyEntryAV1Information.html#a40e8f843dc7fddfb7a83ad42ac8ddcad',1,'logicalaccess::s_KeyEntryAV1Information::kuc()'],['../structlogicalaccess_1_1s__KeyEntryAV2Information.html#a70e6cd8da8fd8f160898b8974fa1d537',1,'logicalaccess::s_KeyEntryAV2Information::kuc()']]]
+];
