@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['readaccess',['readAccess',['../structlogicalaccess_1_1DESFireAccessRights.html#a9db0a1ead1793af5e4f010dcadc17d6d',1,'logicalaccess::DESFireAccessRights']]],
+  ['readandwriteaccess',['readAndWriteAccess',['../structlogicalaccess_1_1DESFireAccessRights.html#a96f5c04d0150cdf6540644347c49017f',1,'logicalaccess::DESFireAccessRights']]],
+  ['readkey',['readKey',['../classlogicalaccess_1_1DESFireAccessInfo.html#aaf938f995c99c98be24bbea30fc82e5a',1,'logicalaccess::DESFireAccessInfo']]],
+  ['readkeyno',['readKeyno',['../classlogicalaccess_1_1DESFireAccessInfo.html#a0bddad2bc3a0778c57579f5e942799e2',1,'logicalaccess::DESFireAccessInfo']]],
+  ['recordfile',['recordFile',['../structlogicalaccess_1_1DESFireCommands_1_1FileSetting.html#af7d7820b402460c1d4bddec4ae5f5550',1,'logicalaccess::DESFireCommands::FileSetting']]],
+  ['recordsize',['recordSize',['../structlogicalaccess_1_1DESFireCommands_1_1RecordFileSetting.html#a3dd1341e733f84cd3b64bda30c693d2e',1,'logicalaccess::DESFireCommands::RecordFileSetting']]],
+  ['refkeykuc',['refkeykuc',['../structlogicalaccess_1_1s__KeyEntryUpdateSettings.html#a27fb111c6babe198dc92d8139d7fb21e',1,'logicalaccess::s_KeyEntryUpdateSettings']]],
+  ['removalidentifier',['removalIdentifier',['../classlogicalaccess_1_1GunneboReaderUnit.html#a3147d3ec632641d07742cc055b48bd3d',1,'logicalaccess::GunneboReaderUnit::removalIdentifier()'],['../classlogicalaccess_1_1OK5553ReaderUnit.html#aaa5f12e6298d74332ee9ad3d6a5dcd90',1,'logicalaccess::OK5553ReaderUnit::removalIdentifier()'],['../classlogicalaccess_1_1RplethReaderUnit.html#a2fb8798526086ddb03259bcc003454ee',1,'logicalaccess::RplethReaderUnit::removalIdentifier()']]],
+  ['repeatcount',['repeatCount',['../structKeyboardProcLParam_1_1__keyboardProcLParam.html#ac7afefcfa22279fd78e2be4367befe73',1,'KeyboardProcLParam::_keyboardProcLParam']]],
+  ['reserved',['reserved',['../structKeyboardProcLParam_1_1__keyboardProcLParam.html#a53c7d435faacbf4822bf10d509a12169',1,'KeyboardProcLParam::_keyboardProcLParam']]],
+  ['ret_5fe2promerr',['RET_E2PROMERR',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#a2ce810222784c0773406505cc6807442',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['ret_5fenvnotfound',['RET_ENVNOTFOUND',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#a2b7d099ffb6d3e4518a9f1c5298927b0',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['ret_5fformaterr',['RET_FORMATERR',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#a90f9ba8760c749ac93e382049cc1b108',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['ret_5fnotag',['RET_NOTAG',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#a89a36392efa32b1613116f0bea91d8ac',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['ret_5fny_5fimplemented',['RET_NY_IMPLEMENTED',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#a216f5c0c3b4b471b0a0673ed4d58932d',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['ret_5fok',['RET_OK',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#af637a4b91db21e587e3296b47146a7c5',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['ret_5fok_5fchain',['RET_OK_CHAIN',['../classlogicalaccess_1_1SmartIDReaderCardAdapter.html#a17e9c13be0f6305d69772cfe06d0fe32',1,'logicalaccess::SmartIDReaderCardAdapter']]],
+  ['rfu',['rfu',['../structlogicalaccess_1_1s__SETAV1.html#a15738f192a576b402e4ac8d95a28d3d5',1,'logicalaccess::s_SETAV1::rfu()'],['../structlogicalaccess_1_1s__SETAV2.html#ae9d37920d19601cd7f524340b7394dd6',1,'logicalaccess::s_SETAV2::rfu()'],['../structlogicalaccess_1_1s__EXTSET.html#ada6728577f2200aafa96979433a83d3d',1,'logicalaccess::s_EXTSET::rfu()'],['../structlogicalaccess_1_1s__KucEntryUpdateSettings.html#a27ada294132cbe4d877a75c5fa66c1ca',1,'logicalaccess::s_KucEntryUpdateSettings::rfu()']]],
+  ['rs485address',['rs485Address',['../structlogicalaccess_1_1STidSTRReaderUnit_1_1STidSTRInformation.html#a549030a05ca60073dc48598e2c8a9f2e',1,'logicalaccess::STidSTRReaderUnit::STidSTRInformation']]]
+];

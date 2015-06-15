@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['idc_5fhook',['IDC_HOOK',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#afd792d232f48971e118e29e2d10ba9a0',1,'resource.h']]],
+  ['idc_5fmyicon',['IDC_MYICON',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#abb326bd165140b31acf04b893ef655ca',1,'resource.h']]],
+  ['idc_5fshowhelp',['IDC_SHOWHELP',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#a0cf444eee8c94ff302b8f9063d0af2c8',1,'resource.h']]],
+  ['idc_5fstatic',['IDC_STATIC',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#ac93033490bc8943cfc82ec3b40e5cd74',1,'resource.h']]],
+  ['idd_5fhook_5fdialog',['IDD_HOOK_DIALOG',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#a5399bff02326716e03cafae420b0cdeb',1,'resource.h']]],
+  ['idi_5fhook',['IDI_HOOK',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#a6b789a238ceb848ba96c268794b38626',1,'resource.h']]],
+  ['idr_5fmainframe',['IDR_MAINFRAME',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#a9772c84d39896ad00b9aeb34b15d324d',1,'resource.h']]],
+  ['ids_5fapp_5ftitle',['IDS_APP_TITLE',['../plugins_2pluginsreaderproviders_2keyboard_2islogkbdhook_2resource_8h.html#a636c9aea2a8d16b73e43df39b3e0e7bd',1,'resource.h']]],
+  ['iso7816_5fins_5fappend_5frecord',['ISO7816_INS_APPEND_RECORD',['../desfireev1commands_8hpp.html#a069d79aae8133cd0a180f0b6da7eb83f',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5fexternal_5fauthenticate',['ISO7816_INS_EXTERNAL_AUTHENTICATE',['../desfireev1commands_8hpp.html#a79354e1a79593f9bd2d23978ad99e525',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5fget_5fchallenge',['ISO7816_INS_GET_CHALLENGE',['../desfireev1commands_8hpp.html#ab03c76707244c1e435f236ce9871684b',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5finternal_5fauthenticate',['ISO7816_INS_INTERNAL_AUTHENTICATE',['../desfireev1commands_8hpp.html#a4a84fb64a95771d444e2f1598ff1014d',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5fread_5fbinary',['ISO7816_INS_READ_BINARY',['../desfireev1commands_8hpp.html#ad68e0229df8cf13f53c17c6f0c94926d',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5fread_5frecords',['ISO7816_INS_READ_RECORDS',['../desfireev1commands_8hpp.html#a60dac548dd7cd25da06f65ffd4369c1e',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5fselect_5ffile',['ISO7816_INS_SELECT_FILE',['../desfireev1commands_8hpp.html#a73b4bd0b1c31ac2ee372895ca871cae3',1,'desfireev1commands.hpp']]],
+  ['iso7816_5fins_5fupdate_5fbinary',['ISO7816_INS_UPDATE_BINARY',['../desfireev1commands_8hpp.html#a4c86fce75f2c428756ee73b155fb98d8',1,'desfireev1commands.hpp']]]
+];

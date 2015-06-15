@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['kc_5fprivate',['KC_PRIVATE',['../classlogicalaccess_1_1openssl_1_1AsymmetricCipher.html#a8631ebb7cb363e9b09ff4baa59ccbea8a38c61464e3a648153f0d957bff882b7b',1,'logicalaccess::openssl::AsymmetricCipher']]],
+  ['kc_5fpublic',['KC_PUBLIC',['../classlogicalaccess_1_1openssl_1_1AsymmetricCipher.html#a8631ebb7cb363e9b09ff4baa59ccbea8a92a2f0de8b98ae96b161d0d1c1410d63',1,'logicalaccess::openssl::AsymmetricCipher']]],
+  ['ks_5fallow_5fchange_5fmk',['KS_ALLOW_CHANGE_MK',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7a4147eb7919d4bc3084585e15cfe7645b',1,'logicalaccess']]],
+  ['ks_5fchange_5fkey_5ffrozen',['KS_CHANGE_KEY_FROZEN',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7a2dc736c307eb4e39a553e0a5cd75827d',1,'logicalaccess']]],
+  ['ks_5fchange_5fkey_5fwith_5fmk',['KS_CHANGE_KEY_WITH_MK',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7ac3c4b4c96958d20fc120bfe466776a45',1,'logicalaccess']]],
+  ['ks_5fchange_5fkey_5fwith_5ftargeted_5fkeyno',['KS_CHANGE_KEY_WITH_TARGETED_KEYNO',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7aa165f8eee56e68da87b2984268185b3a',1,'logicalaccess']]],
+  ['ks_5fconfiguration_5fchangeable',['KS_CONFIGURATION_CHANGEABLE',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7aef02d2f334c1c7844a030984654242f8',1,'logicalaccess']]],
+  ['ks_5fdefault',['KS_DEFAULT',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7a1658c62b00d3c540bb50adc2cbf03c16',1,'logicalaccess']]],
+  ['ks_5ffree_5fcreate_5fdelete_5fwithout_5fmk',['KS_FREE_CREATE_DELETE_WITHOUT_MK',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7a6b9aab9506da54ca62cd80d9a7dbd694',1,'logicalaccess']]],
+  ['ks_5ffree_5flisting_5fwithout_5fmk',['KS_FREE_LISTING_WITHOUT_MK',['../namespacelogicalaccess.html#ad1f4fbd4308128a2a506d07030ed78f7a8118c0912081e6860714abdc1a51e815',1,'logicalaccess']]],
+  ['kst_5fcomputer_5fmemory',['KST_COMPUTER_MEMORY',['../namespacelogicalaccess.html#a655e473e52f72e647b0a281bdee76f0dafd72338ee193b37f4ea7002bc9ff0371',1,'logicalaccess']]],
+  ['kst_5freader_5fmemory',['KST_READER_MEMORY',['../namespacelogicalaccess.html#a655e473e52f72e647b0a281bdee76f0da814e89ba06368b45bce3ed259aa5ead1',1,'logicalaccess']]],
+  ['kst_5fsam',['KST_SAM',['../namespacelogicalaccess.html#a655e473e52f72e647b0a281bdee76f0daf4944e49ecd38730e691a10ac8dcb223',1,'logicalaccess']]],
+  ['kt_5fkey_5fa',['KT_KEY_A',['../namespacelogicalaccess.html#a7d7b927b3c6c8e56d88977dba1d8f32ea8bd9ce85a5ece0bb0c8598e1668a8207',1,'logicalaccess']]],
+  ['kt_5fkey_5faes_5fa',['KT_KEY_AES_A',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013ab9f7f383cdfb832f9da47a317d82592c',1,'logicalaccess']]],
+  ['kt_5fkey_5faes_5fb',['KT_KEY_AES_B',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013ab841bfbc8daf9171b2990e596887a46c',1,'logicalaccess']]],
+  ['kt_5fkey_5faessl1',['KT_KEY_AESSL1',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013ac3743d2e946956a57eeef2019748c1f4',1,'logicalaccess']]],
+  ['kt_5fkey_5fb',['KT_KEY_B',['../namespacelogicalaccess.html#a7d7b927b3c6c8e56d88977dba1d8f32ea1d68fc5514886bbf5daf58d2beec15bc',1,'logicalaccess']]],
+  ['kt_5fkey_5fconfiguration',['KT_KEY_CONFIGURATION',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013ac2865abcc28d8d37b4d705e14ae1153b',1,'logicalaccess']]],
+  ['kt_5fkey_5fcrypto1_5fa',['KT_KEY_CRYPTO1_A',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013ae47c08a5b1c312b99571c3eca7f48a63',1,'logicalaccess']]],
+  ['kt_5fkey_5fcrypto1_5fb',['KT_KEY_CRYPTO1_B',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013a7b469c9ff22cea2f887c9fe4343aa34c',1,'logicalaccess']]],
+  ['kt_5fkey_5fmastercard',['KT_KEY_MASTERCARD',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013ab9e0a62a99f8d4f2efa9cc2fdb0aa287',1,'logicalaccess']]],
+  ['kt_5fkey_5foriginality',['KT_KEY_ORIGINALITY',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013a3f8aa80a130648811f4abfac774efdc2',1,'logicalaccess']]],
+  ['kt_5fkey_5fswitchl2',['KT_KEY_SWITCHL2',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013a6d0029bed20edc0db1ee8aa99330b4b9',1,'logicalaccess']]],
+  ['kt_5fkey_5fswitchl3',['KT_KEY_SWITCHL3',['../namespacelogicalaccess.html#a5b35dab121fbfa7e2be0080963560013a812b0a0db93ee60b1abc8f60d39df636',1,'logicalaccess']]]
+];
