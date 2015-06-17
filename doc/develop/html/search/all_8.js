@@ -24,6 +24,7 @@ var searchData=
   ['hassymbol',['hasSymbol',['../classlogicalaccess_1_1IDynLibrary.html#a3534fc81d84154dd125c87fee1d0a97c',1,'logicalaccess::IDynLibrary::hasSymbol()'],['../classlogicalaccess_1_1PosixDynLibrary.html#a0c2da5a035a72d6c89dacef980e0e2da',1,'logicalaccess::PosixDynLibrary::hasSymbol()'],['../classlogicalaccess_1_1WindowsDynLibrary.html#a6408f73392ac5e593c9831f88301a90a',1,'logicalaccess::WindowsDynLibrary::hasSymbol()']]],
   ['hasviccmemorysize',['hasVICCMemorySize',['../structlogicalaccess_1_1ISO15693Commands_1_1SystemInformation.html#afbe904e7e8d1e7336d4a502e96e9fa26',1,'logicalaccess::ISO15693Commands::SystemInformation']]],
   ['hcheckthrd',['hCheckThrd',['../islogkbdhook_8cpp.html#a497f69adaac52923827e7d4d1ecd286a',1,'islogkbdhook.cpp']]],
+  ['hex',['HEX',['../CMakeCCompilerId_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX():&#160;CMakeCXXCompilerId.cpp']]],
   ['hhostevent',['hHostEvent',['../islogkbdhook_8cpp.html#afd1286d09f314be86b571c7485cbef87',1,'islogkbdhook.cpp']]],
   ['hid',['HID',['../namespacelogicalaccess.html#ad085382ce6ce0db30683e327337bad0cab0ed39564cc1586f0de709dad03e4242',1,'logicalaccess']]],
   ['hid_5f3des',['HID_3DES',['../namespacelogicalaccess.html#a11f091c2982b9a3b2106f29d54ae55dba2d531ab85d0a42bc157a3932db33f6da',1,'logicalaccess']]],

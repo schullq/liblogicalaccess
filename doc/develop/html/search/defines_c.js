@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['platform_5fid',['PLATFORM_ID',['../CMakeCCompilerId_8c.html#adbc5372f40838899018fadbc89bd588b',1,'PLATFORM_ID():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#adbc5372f40838899018fadbc89bd588b',1,'PLATFORM_ID():&#160;CMakeCXXCompilerId.cpp']]],
   ['pluginobject_5fmaxlen',['PLUGINOBJECT_MAXLEN',['../readerunit_8hpp.html#a82a7640010d7a810cce6b02762d64890',1,'readerunit.hpp']]],
   ['polynom_5fpattern',['POLYNOM_PATTERN',['../mifarecommands_8cpp.html#a2d1366533cc2f8479b63a3d87c1acc94',1,'POLYNOM_PATTERN():&#160;mifarecommands.cpp'],['../mifareplussl1commands_8cpp.html#a2d1366533cc2f8479b63a3d87c1acc94',1,'POLYNOM_PATTERN():&#160;mifareplussl1commands.cpp']]],
   ['prefix_5fpattern',['PREFIX_PATTERN',['../mifarecommands_8cpp.html#aa8494fb1f0249eb23afb375cf4dd2ca8',1,'PREFIX_PATTERN():&#160;mifarecommands.cpp'],['../mifareplussl1commands_8cpp.html#aa8494fb1f0249eb23afb375cf4dd2ca8',1,'PREFIX_PATTERN():&#160;mifareplussl1commands.cpp']]],
