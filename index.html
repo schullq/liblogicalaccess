@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Open Source RFID Library for Windows and Linux" />
+	<meta name="keywords" content="rfid, c++, c#, dotnet, free, open source, lgpl, gpl, plugin, desfire, mifare, hid, iclass, icode, iso15693, iso7816, prox, em4102, em4235, download, linux, debian, windows, sdk" />
+    <meta name="author" content="ISLOG" />
+    <link rel="icon" href="favicon.png" />
 
     <title>LibLogicalAccess</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 	
-	<!-- GitHub ForkMe -->
-	<style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:40px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style>
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<link href="assets/css/custom.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -49,41 +36,91 @@
       <!-- Example row of columns -->
 	  <div class="row">
         <div class="col-md-12">
-	  <h2>Open</h2>
+		  <h2>Open</h2>
           <p>
-            Welcome to the LibLogicalAccess project web page. LibLogicalAccess is an open source RFID library developed in C++.
-            It provides a good abstraction layer that lets you use differents cards and reader in a semantically consistent way.
+            Welcome to the LibLogicalAccess project web page. LibLogicalAccess is a <strong>free</strong> and <strong>open source</strong> RFID / NFC library (LGPL license) developed in <strong>C++</strong>.
+            It provides a good abstraction layer that lets you use different cards and reader in a semantically consistent way.
           </p><br />
-	</div>
+		</div>
 	  </div>
       <div class="row">
         <div class="col-md-6">
           <h2>Portable</h2>
-          <p>LibLogicalAccess is designed for portablity. The library works well on both Linux and Windows, aswell as OSX.
-            The codebase also build and works on both x86/amd64 and ARM.
+          <p>LibLogicalAccess is designed for portability. The library works well on both <strong>Linux</strong> and <strong>Windows</strong>, as well as <strong>Mac OSX</strong>.
+            The codebase also build and works on both <strong>x86</strong>/<strong>amd64</strong> and <strong>arm</strong>.<br />
+			On Windows, the library can be accessed through a COM component which give you the opportunity to develop directly using your favorite development language (<a href="https://github.com/islog/liblogicalaccess/wiki/Use-this-RFID-library-in-DotNet-%28C%23%29">C# .NET</a>, <a href="https://github.com/islog/liblogicalaccess/wiki/Use-this-RFID-library-in-Delphi">Delphi</a>, <a href="https://github.com/islog/liblogicalaccess/wiki/Use-this-RFID-library-in-VB6">VB6</a> ...).
           </p>
-       </div>
+		</div>
         <div class="col-md-6">
           <h2>Good hardware support</h2>
           <p>LibLogicalAccess architecture is modules based. This allows it to support supports various card readers and RFID chips.</p>
-          <p><a class="btn btn-default" href="https://github.com/islog/liblogicalaccess" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="https://github.com/islog/liblogicalaccess/wiki/Supported-hardware" role="button">View details &raquo;</a></p>
         </div>
       </div>
+	  
+	  <hr />
+	  
+	  <div class="row">
+        <div class="col-md-4">
+          <h2>Starter Kit</h2>
+          <p>The Starter Kit is the need-to-have for whoever interested in RFID development. It contains several hardware, software and source code to start correctly your project.
+		  <ul>
+			<li>Omnikey 5021 reader</li>
+			<li>Several card technology</li>
+			<li>(2x Mifare Classic, 2x Mifare DESFire EV1, 2x HID iClass)</li>
+			<li>USB Key with: releases, C++ samples (including Visual Studio and Qt samples) and ReadCard software community edition</li>
+		  </ul>
+		  </p>
+          <p><a class="btn btn-default" href="http://www.islog.com/en/contact" role="button">Buy &raquo;</a> <strong>119€</strong></p>
+		</div>
+        <div class="col-md-4">
+          <h2>.NET Starter Kit</h2>
+          <p>The .NET Starter Kit is the need-to-have for whoever interested in RFID development on .NET environment. It contains several hardware, software and GUI controls to start correctly your DotNet project.</p>
+		  <ul>
+			<li>Omnikey 5021 reader</li>
+			<li>Several card technology</li>
+			<li>(2x Mifare Classic, 2x Mifare DESFire EV1, 2x HID iClass)</li>
+			<li>USB Key with: releases, .NET GUI library, C++/C# samples (including Visual Studio and Qt samples) and ReadCard software full edition</li>
+		  </ul>
+          <p><a class="btn btn-default" href="http://www.islog.com/en/contact" role="button">Buy &raquo;</a> <strong>239€</strong></p>
+        </div>
+		<div class="col-md-4">
+          <h2>Support Plans</h2>
+          <p>Guarantee your project good health by suscribing to one of our support plan bellow, allowing you to contact our expert team on demand and to submit high priority bug report.</p>
+		  <ul>
+			<li>1 individual for 1 year</li>
+			<li>Small team (1 to 10 individuals, same company) for 1 year</li>
+			<li>Medium team (11 to 100 individuals, same company) for 1 year</li>
+			<li>Large team (above 100 individuals, same company) for 1 year</li>
+		  </ul>
+          <p><a class="btn btn-default" href="http://www.islog.com/en/contact" role="button">Get a quotation &raquo;</a></p>
+        </div>
+      </div>
+	  
+	  <hr />
+	  <div class="row">
+        <div class="col-md-12">
+		  <h4>Not a developer?</h4>
+          <p><a href="http://www.islog.com/en/software/" style="text-decoration: none; color: blue;">Use packaged solutions</a>.
+          </p>
+		</div>
+	  </div>
 
-      <hr>
+      <hr />
 
       <footer>
         <p>LibLogicalAccess, another <a href="http://www.islog.com" target="_blank">ISLOG</a> project. <a href="https://github.com/islog/liblogicalaccess" title="Powered by LibLogicalAccess project" target="_blank"><img src="images/liblogicalaccess_logo_x32.png" /></a></p>
       </footer>
     </div> <!-- /container -->
 
+	<div id="rightadvert">
+		
+	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
