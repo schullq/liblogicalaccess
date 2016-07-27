@@ -1,7 +1,7 @@
 #ifndef WINDOWSDYNLIBRARY_HPP__
 #define WINDOWSDYNLIBRARY_HPP__
 
-#define _WINSOCKAPI_    // stops windows.h including winsock.h
+#define _WINSOCKAPI_ // stops windows.h including winsock.h
 #include <windows.h>
 #include <string>
 
@@ -10,25 +10,25 @@
 
 namespace logicalaccess
 {
-    class WindowsDynLibrary : public IDynLibrary, private WinClass
+class WindowsDynLibrary : public IDynLibrary, private WinClass
+{
+  private:
+    std::string _name;
+    HMODULE _handle;
+
+  public:
+    WindowsDynLibrary(const std::string &dlName);
+    ~WindowsDynLibrary();
+
+    const std::string &getName(void) const
     {
-    private:
-        std::string _name;
-        HMODULE _handle;
+        return _name;
+    }
 
-    public:
-        WindowsDynLibrary(const std::string& dlName);
-		~WindowsDynLibrary();
+    void *getSymbol(const char *symName);
 
-        const std::string& getName(void) const
-        {
-            return _name;
-        }
-
-        void* getSymbol(const char* symName);
-
-        virtual bool hasSymbol(const char *name);
-    };
+    virtual bool hasSymbol(const char *name);
+};
 }
 
 #endif

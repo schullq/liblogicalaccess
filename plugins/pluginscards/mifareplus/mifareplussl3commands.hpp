@@ -14,19 +14,18 @@
 
 namespace logicalaccess
 {
-    class LIBLOGICALACCESS_API MifarePlusSL3Commands_NEW : public Commands
-    {
-    public:
-        bool authenticate(int sector, std::shared_ptr<AES128Key> key,
-                          MifareKeyType type);
+class LIBLOGICALACCESS_API MifarePlusSL3Commands_NEW : public Commands
+{
+  public:
+    bool authenticate(int sector, std::shared_ptr<AES128Key> key, MifareKeyType type);
 
-        void resetAuth();
+    void resetAuth();
 
-        virtual std::vector<unsigned char> readBinaryPlain(unsigned char blockno, size_t len);
+    virtual std::vector<unsigned char> readBinaryPlain(unsigned char blockno, size_t len);
 
-    private:
-        std::unique_ptr<MifarePlusSL3Auth> auth_;
-    };
+  private:
+    std::unique_ptr<MifarePlusSL3Auth> auth_;
+};
 }
 
 #endif /* LOGICALACCESS_MIFAREPLUSSL3COMMANDS_HPP*/

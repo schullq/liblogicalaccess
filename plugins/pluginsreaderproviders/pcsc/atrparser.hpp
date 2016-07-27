@@ -72,8 +72,7 @@ class LIBLOGICALACCESS_API ATRParser
     /**
      * Register an harcoded ATR acceptable for any reader.
      */
-    void register_hardcoded_atr(const std::string &atr,
-                                const std::string &card_type);
+    void register_hardcoded_atr(const std::string &atr, const std::string &card_type);
 
     struct ATRInfo
     {

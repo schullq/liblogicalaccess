@@ -19,14 +19,12 @@ bool MifarePlusOmnikeyXX21SL1Commands::AESAuthenticate(
     return MifarePlusSL1Commands::AESAuthenticate(key, keyslot);
 }
 
-MifarePlusOmnikeyXX21SL1Commands::GenericSessionGuard::GenericSessionGuard(
-    Commands *cmd)
+MifarePlusOmnikeyXX21SL1Commands::GenericSessionGuard::GenericSessionGuard(Commands *cmd)
     : cmd_(cmd)
 {
     // The reader card adapter shall be a PCSCReaderCardAdapter, because this
     // generic guard is only for PCSC command (and only for XX21).
-    rca_ = std::dynamic_pointer_cast<PCSCReaderCardAdapter>(
-        cmd_->getReaderCardAdapter());
+    rca_ = std::dynamic_pointer_cast<PCSCReaderCardAdapter>(cmd_->getReaderCardAdapter());
     assert(rca_);
 
     adapter_ = std::make_shared<Adapter>();
@@ -65,8 +63,8 @@ std::vector<unsigned char>
 MifarePlusOmnikeyXX21SL1Commands::GenericSessionGuard::Adapter::adaptAnswer(
     const std::vector<unsigned char> &answer)
 {
-	LLA_LOG_CTX("ADAPTER");
-	LOG(DEBUGS) << "BEFORE ADAPTING: " << answer;
+    LLA_LOG_CTX("ADAPTER");
+    LOG(DEBUGS) << "BEFORE ADAPTING: " << answer;
     ByteVector ret(answer.begin() + 2, answer.end());
     return ret;
 }

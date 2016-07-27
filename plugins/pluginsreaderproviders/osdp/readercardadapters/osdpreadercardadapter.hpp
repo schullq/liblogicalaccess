@@ -1,7 +1,7 @@
 /**
  * \file osdpreadercardadapter.hpp
  * \author Maxime C. <maxime-dev@islog.com>
- * \brief Reader/card adapter. 
+ * \brief Reader/card adapter.
  */
 
 #ifndef LOGICALACCESS_OSDPREADERCARDADAPTER_HPP
@@ -14,35 +14,39 @@
 
 namespace logicalaccess
 {
-	/**
-	 * \brief A reader/card adapter for Transparent Smart Card Interface OSDP.
-	 */
-	class LIBLOGICALACCESS_API OSDPReaderCardAdapter : public ISO7816ReaderCardAdapter
-	{
-		public:
+/**
+ * \brief A reader/card adapter for Transparent Smart Card Interface OSDP.
+ */
+class LIBLOGICALACCESS_API OSDPReaderCardAdapter : public ISO7816ReaderCardAdapter
+{
+  public:
+    OSDPReaderCardAdapter(std::shared_ptr<OSDPCommands> command, unsigned char address,
+                          std::shared_ptr<DESFireISO7816ResultChecker> resultChecker);
 
-			OSDPReaderCardAdapter(std::shared_ptr<OSDPCommands> command, unsigned char address, std::shared_ptr<DESFireISO7816ResultChecker> resultChecker);
+    ~OSDPReaderCardAdapter();
 
-			~OSDPReaderCardAdapter();
+    std::shared_ptr<DataTransport> getDataTransport() const
+    {
+        return d_dataTransport;
+    };
 
-			std::shared_ptr<DataTransport> getDataTransport() const { return d_dataTransport; };
+    void setDataTransport(std::shared_ptr<DataTransport> dataTransport)
+    {
+        d_dataTransport = dataTransport;
+    };
 
-			void setDataTransport(std::shared_ptr<DataTransport> dataTransport) { d_dataTransport = dataTransport; };
+    virtual std::vector<unsigned char>
+    sendCommand(const std::vector<unsigned char> &command, long timeout = 3000);
 
-			virtual std::vector<unsigned char> sendCommand(const std::vector<unsigned char>& command, long timeout = 3000);
+  protected:
+    std::shared_ptr<DataTransport> d_dataTransport;
 
-		protected:
-			
-			std::shared_ptr<DataTransport> d_dataTransport;
+    std::shared_ptr<OSDPCommands> m_commands;
 
-			std::shared_ptr<OSDPCommands> m_commands;
+    std::shared_ptr<DESFireISO7816ResultChecker> d_resultChecker;
 
-			std::shared_ptr<DESFireISO7816ResultChecker> d_resultChecker;
-
-			unsigned char m_address;
-	};
-
+    unsigned char m_address;
+};
 }
 
 #endif /* LOGICALACCESS_OSDPREADERCARDADAPTER_HPP */
-

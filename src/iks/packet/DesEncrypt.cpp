@@ -47,8 +47,7 @@ size_t DesEncryptCommand::binary_size_impl() const
     return sizeof(uint16_t) + 8 + payload_.size() + key_name_.size() + 1 + 1 + 1;
 }
 
-DesEncryptResponse::DesEncryptResponse(uint16_t status,
-                                       const std::vector<uint8_t> &data)
+DesEncryptResponse::DesEncryptResponse(uint16_t status, const std::vector<uint8_t> &data)
     : BaseResponse(SMSG_OP_DES_ENCRYPT, status)
     , bytes_(data)
 {

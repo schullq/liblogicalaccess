@@ -15,39 +15,41 @@
 
 namespace logicalaccess
 {
-#define CHIP_SMARTFRAME		"SmartFrame"
+#define CHIP_SMARTFRAME "SmartFrame"
+
+/**
+ * \brief The Smart Frame base chip class.
+ */
+class LIBLOGICALACCESS_API SmartFrameChip : public Chip
+{
+  public:
+    /**
+     * \brief Constructor.
+     */
+    SmartFrameChip();
 
     /**
-     * \brief The Smart Frame base chip class.
+     * \brief Destructor.
      */
-    class LIBLOGICALACCESS_API SmartFrameChip : public Chip
+    virtual ~SmartFrameChip();
+
+    /**
+     * \brief Get the generic card type.
+     * \return The generic card type.
+     */
+    virtual std::string getGenericCardType() const
     {
-    public:
-
-        /**
-         * \brief Constructor.
-         */
-        SmartFrameChip();
-
-        /**
-         * \brief Destructor.
-         */
-        virtual ~SmartFrameChip();
-
-        /**
-         * \brief Get the generic card type.
-         * \return The generic card type.
-         */
-        virtual std::string getGenericCardType() const { return CHIP_SMARTFRAME; };
-
-        /**
-         * \brief Get the root location node.
-         * \return The root location node.
-         */
-        virtual std::shared_ptr<LocationNode> getRootLocationNode();
-
-    protected:
+        return CHIP_SMARTFRAME;
     };
+
+    /**
+     * \brief Get the root location node.
+     * \return The root location node.
+     */
+    virtual std::shared_ptr<LocationNode> getRootLocationNode();
+
+  protected:
+};
 }
 
 #endif

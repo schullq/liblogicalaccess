@@ -14,15 +14,16 @@
 
 namespace logicalaccess
 {
-    class LIBLOGICALACCESS_API ElatecBufferParser : public CircularBufferParser
-    {
-    public:
-        ElatecBufferParser() {};
+class LIBLOGICALACCESS_API ElatecBufferParser : public CircularBufferParser
+{
+  public:
+    ElatecBufferParser(){};
 
-        virtual ~ElatecBufferParser() {};
+    virtual ~ElatecBufferParser(){};
 
-        virtual std::vector<unsigned char> getValidBuffer(boost::circular_buffer<unsigned char>& circular_buffer);
-    };
+    virtual std::vector<unsigned char>
+    getValidBuffer(boost::circular_buffer<unsigned char> &circular_buffer);
+};
 }
 
 #endif /* ELATECBUFFERPARSER_HPP */

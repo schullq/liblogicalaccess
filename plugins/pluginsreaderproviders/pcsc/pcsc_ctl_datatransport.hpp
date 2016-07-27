@@ -11,20 +11,19 @@
 namespace logicalaccess
 {
 
-    /**
-     * A PCSC Datatransport that transmits command using the
-     * SCardControl() function instead of the SCardTransmit().
-     *
-     * This data transport is useful when talking to the reader in direct mode.
-     */
-    class PCSCControlDataTransport : public PCSCDataTransport
-    {
+/**
+ * A PCSC Datatransport that transmits command using the
+ * SCardControl() function instead of the SCardTransmit().
+ *
+ * This data transport is useful when talking to the reader in direct mode.
+ */
+class PCSCControlDataTransport : public PCSCDataTransport
+{
 
-    public:
-        virtual void send(const std::vector<unsigned char> &data) override;
-    };
-
+  public:
+    virtual void send(const std::vector<unsigned char> &data) override;
+};
 }
 
 
-#endif //LIBLOGICALACCESS_PCSC_CTL_DATATRANSPORT_HPP
+#endif // LIBLOGICALACCESS_PCSC_CTL_DATATRANSPORT_HPP

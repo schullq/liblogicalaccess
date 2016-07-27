@@ -12,8 +12,7 @@ MifareUltralightUIDChangerService::MifareUltralightUIDChangerService(
 {
 }
 
-void MifareUltralightUIDChangerService::changeUID(
-    const std::vector<uint8_t> &new_uid)
+void MifareUltralightUIDChangerService::changeUID(const std::vector<uint8_t> &new_uid)
 {
     auto loc = std::make_shared<MifareUltralightLocation>();
     EXCEPTION_ASSERT_WITH_LOG(new_uid.size() == 7, LibLogicalAccessException,

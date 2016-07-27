@@ -124,8 +124,7 @@ class LIBLOGICALACCESS_API SSLTransport
      * \param error Read error
      * \param bytes_transferred Byte transfered
 */
-    void read_complete(const boost::system::error_code &error,
-                       size_t bytes_transferred);
+    void read_complete(const boost::system::error_code &error, size_t bytes_transferred);
 
     /**
 * \brief Read timeout

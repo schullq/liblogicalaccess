@@ -17,70 +17,70 @@
 
 namespace logicalaccess
 {
-    class TwicProfile;
+class TwicProfile;
+
+/**
+ * \brief The Twic ISO7816 commands base class.
+ */
+class LIBLOGICALACCESS_API TwicISO7816Commands : public ISO7816ISO7816Commands,
+                                                 public TwicCommands
+{
+  public:
+    /**
+     * \brief Constructor.
+     */
+    TwicISO7816Commands();
 
     /**
-     * \brief The Twic ISO7816 commands base class.
+     * \brief Destructor.
      */
-    class LIBLOGICALACCESS_API TwicISO7816Commands : public ISO7816ISO7816Commands, public TwicCommands
-    {
-    public:
+    virtual ~TwicISO7816Commands();
 
-        /**
-         * \brief Constructor.
-         */
-        TwicISO7816Commands();
+    /**
+     * \brief Select the TWIC application.
+     */
+    virtual void selectTWICApplication();
 
-        /**
-         * \brief Destructor.
-         */
-        virtual ~TwicISO7816Commands();
+    /**
+     * \brief Get the Unsigned Cardholder Unique Identifier.
+     * \return the data.
+     */
+    virtual std::vector<unsigned char> getUnsignedCardholderUniqueIdentifier();
 
-        /**
-         * \brief Select the TWIC application.
-         */
-        virtual void selectTWICApplication();
+    /**
+     * \brief Get the TWIC Privacy Key.
+     * \return the data.
+     * \remarks Only accessible with the contact chip.
+     */
+    virtual std::vector<unsigned char> getTWICPrivacyKey();
 
-        /**
-         * \brief Get the Unsigned Cardholder Unique Identifier.
-         * \return the data.
-         */
-        virtual std::vector<unsigned char>  getUnsignedCardholderUniqueIdentifier();
+    /**
+     * \brief Get the Cardholder Unique Identifier.
+     * \return the data.
+     */
+    virtual std::vector<unsigned char> getCardholderUniqueIdentifier();
 
-        /**
-         * \brief Get the TWIC Privacy Key.
-         * \return the data.
-         * \remarks Only accessible with the contact chip.
-         */
-        virtual std::vector<unsigned char>  getTWICPrivacyKey();
+    /**
+     * \brief Get the Cardholder Fingerprints.
+     * \return the data.
+     */
+    virtual std::vector<unsigned char> getCardHolderFingerprints();
 
-        /**
-         * \brief Get the Cardholder Unique Identifier.
-         * \return the data.
-         */
-        virtual std::vector<unsigned char>  getCardholderUniqueIdentifier();
+    /**
+     * \brief Get the Security Object.
+     * \return the data.
+     */
+    virtual std::vector<unsigned char> getSecurityObject();
 
-        /**
-         * \brief Get the Cardholder Fingerprints.
-         * \return the data.
-         */
-        virtual std::vector<unsigned char>  getCardHolderFingerprints();
+    /**
+     * \brief Get TWIC data object.
+     * \param dataObject The data object.
+     * \return the data.
+     */
+    virtual std::vector<unsigned char> getTWICData(int64_t dataObject);
 
-        /**
-         * \brief Get the Security Object.
-         * \return the data.
-         */
-        virtual std::vector<unsigned char>  getSecurityObject();
-
-        /**
-         * \brief Get TWIC data object.
-         * \param dataObject The data object.
-         * \return the data.
-         */
-        virtual std::vector<unsigned char> getTWICData(int64_t dataObject);
-
-    protected:
-    };
+  protected:
+};
 }
 
 #endif

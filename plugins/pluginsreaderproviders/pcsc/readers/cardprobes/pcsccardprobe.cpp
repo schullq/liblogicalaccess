@@ -25,7 +25,8 @@ bool PCSCCardProbe::maybe_mifare_classic()
             std::dynamic_pointer_cast<MifareCommands>(chip->getCommands());
 
         logicalaccess::MifareAccessInfo::SectorAccessBits sab;
-		auto ret = command->readSector(1, 0, std::shared_ptr<MifareKey>(), std::shared_ptr<MifareKey>(), sab);
+        auto ret = command->readSector(1, 0, std::shared_ptr<MifareKey>(),
+                                       std::shared_ptr<MifareKey>(), sab);
         return true;
     }
     catch (const CardException &e)
@@ -59,8 +60,7 @@ bool PCSCCardProbe::is_desfire(std::vector<uint8_t> *uid)
         desfire_command->getVersion(cardversion);
 
         if (uid)
-            *uid =
-                ByteVector(std::begin(cardversion.uid), std::end(cardversion.uid));
+            *uid = ByteVector(std::begin(cardversion.uid), std::end(cardversion.uid));
         return true;
     }
     catch (const std::exception &)
@@ -85,11 +85,10 @@ bool PCSCCardProbe::is_desfire_ev1(std::vector<uint8_t> *uid)
         desfire_command->getVersion(cardversion);
 
         if (uid)
-            *uid =
-                ByteVector(std::begin(cardversion.uid), std::end(cardversion.uid));
+            *uid = ByteVector(std::begin(cardversion.uid), std::end(cardversion.uid));
         return cardversion.softwareMjVersion >= 1;
     }
-    catch (const std::exception&)
+    catch (const std::exception &)
     {
         // If an error occurred, the card probably isn't desfire.
         return false;
@@ -98,23 +97,23 @@ bool PCSCCardProbe::is_desfire_ev1(std::vector<uint8_t> *uid)
 
 bool PCSCCardProbe::is_mifare_ultralight_c()
 {
-	try
-	{
-		LLA_LOG_CTX("Probe::is_mifare_ultralight_c");
-		reset();
-		auto chip = reader_unit_->createChip("MifareUltralightC");
-		auto mfu_command =
-			std::dynamic_pointer_cast<MifareUltralightCCommands>(chip->getCommands());
-		assert(mfu_command);
-		mfu_command->authenticate(std::shared_ptr<TripleDESKey>());
-	}
-	catch (const std::exception&)
-	{
-		// TODO: handle the case authentication is not default by checking error code
-		return false;
-	}
+    try
+    {
+        LLA_LOG_CTX("Probe::is_mifare_ultralight_c");
+        reset();
+        auto chip = reader_unit_->createChip("MifareUltralightC");
+        auto mfu_command =
+            std::dynamic_pointer_cast<MifareUltralightCCommands>(chip->getCommands());
+        assert(mfu_command);
+        mfu_command->authenticate(std::shared_ptr<TripleDESKey>());
+    }
+    catch (const std::exception &)
+    {
+        // TODO: handle the case authentication is not default by checking error code
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 
@@ -154,8 +153,7 @@ bool PCSCCardProbe::has_desfire_random_uid(ByteVector *uid)
             return true;
         }
         if (uid)
-            *uid =
-                ByteVector(std::begin(cardversion.uid), std::end(cardversion.uid));
+            *uid = ByteVector(std::begin(cardversion.uid), std::end(cardversion.uid));
         return false;
     }
     catch (const std::exception &)

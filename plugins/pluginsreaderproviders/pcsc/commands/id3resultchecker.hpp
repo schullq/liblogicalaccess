@@ -7,7 +7,7 @@ namespace logicalaccess
 class ID3ResultChecker : public ISO7816ResultChecker
 {
 
-      public:
-        ID3ResultChecker();
+  public:
+    ID3ResultChecker();
 };
 }

@@ -54,9 +54,9 @@ std::vector<uint8_t> DesfireChangeKeyCommand::serialize() const
 
 size_t DesfireChangeKeyCommand::binary_size_impl() const
 {
-    return 1 + oldkey_idt_.size() + 1 + newkey_idt_.size() + 1 +
-           session_key_.size() + 1 + 1 + iv_.size() + 1 +
-           oldkey_divinfo_.binary_size() + newkey_divinfo_.binary_size();
+    return 1 + oldkey_idt_.size() + 1 + newkey_idt_.size() + 1 + session_key_.size() + 1 +
+           1 + iv_.size() + 1 + oldkey_divinfo_.binary_size() +
+           newkey_divinfo_.binary_size();
 }
 
 DesfireChangeKeyResponse::DesfireChangeKeyResponse(uint16_t status,

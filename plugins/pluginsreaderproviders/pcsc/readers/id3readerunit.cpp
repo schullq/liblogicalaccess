@@ -43,8 +43,7 @@ std::vector<CL1356PlusUtils::Info> ID3ReaderUnit::listCards()
         info.atr_ = getAtr(i);
         selectCard(i);
         power_card(true);
-        info.guessed_type_ =
-            ATRParser::guessCardType(info.atr_, PCSC_RUT_ID3_CL1356);
+        info.guessed_type_ = ATRParser::guessCardType(info.atr_, PCSC_RUT_ID3_CL1356);
 
         // This type detection cannot be done by `adjustChip()` because we are
         // not working with Chip object at this point.
@@ -63,9 +62,8 @@ std::shared_ptr<Chip> ID3ReaderUnit::selectCard(uint8_t idx)
     {
         APDUWrapperGuard guard(this);
         ret = getDefaultReaderCardAdapter()->sendCommand({0x10, idx});
-        EXCEPTION_ASSERT_WITH_LOG(
-            ret.size() == 0, LibLogicalAccessException,
-            "Excepted a 0 length response, got something else");
+        EXCEPTION_ASSERT_WITH_LOG(ret.size() == 0, LibLogicalAccessException,
+                                  "Excepted a 0 length response, got something else");
         power_card(true);
     }
     return nullptr;
@@ -97,7 +95,7 @@ bool ID3ReaderUnit::process_insertion(const std::string &cardType, int maxwait,
     //    we do not rely on automatic card tracking, but rather on the list card
     //    command.
     PCSCReaderUnit::process_insertion(cardType, maxwait, etc);
-	if (d_card_type == CHIP_UNKNOWN) // automatic
+    if (d_card_type == CHIP_UNKNOWN) // automatic
     {
         return true;
     }

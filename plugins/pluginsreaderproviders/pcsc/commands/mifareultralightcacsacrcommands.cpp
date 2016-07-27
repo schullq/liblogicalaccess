@@ -17,17 +17,19 @@
 
 namespace logicalaccess
 {
-    MifareUltralightCACSACRCommands::MifareUltralightCACSACRCommands()
-        : MifareUltralightCPCSCCommands()
-    {
-    }
+MifareUltralightCACSACRCommands::MifareUltralightCACSACRCommands()
+    : MifareUltralightCPCSCCommands()
+{
+}
 
-    MifareUltralightCACSACRCommands::~MifareUltralightCACSACRCommands()
-    {
-    }
+MifareUltralightCACSACRCommands::~MifareUltralightCACSACRCommands()
+{
+}
 
-    std::vector<unsigned char> MifareUltralightCACSACRCommands::sendGenericCommand(const std::vector<unsigned char>& data)
-    {
-        return getPCSCReaderCardAdapter()->sendAPDUCommand(0xFF, 0x00, 0x00, 0x00, static_cast<unsigned char>(data.size()), data);
-    }
+std::vector<unsigned char> MifareUltralightCACSACRCommands::sendGenericCommand(
+    const std::vector<unsigned char> &data)
+{
+    return getPCSCReaderCardAdapter()->sendAPDUCommand(
+        0xFF, 0x00, 0x00, 0x00, static_cast<unsigned char>(data.size()), data);
+}
 }

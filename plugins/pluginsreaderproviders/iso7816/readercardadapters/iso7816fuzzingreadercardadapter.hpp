@@ -20,21 +20,22 @@
 
 namespace logicalaccess
 {
-	/**
-	* \brief A default ISO7816 Fuzzing reader/card adapter class.
-	*/
-	class LIBLOGICALACCESS_API ISO7816FuzzingReaderCardAdapter : public ISO7816ReaderCardAdapter
-	{
-	public:
+/**
+* \brief A default ISO7816 Fuzzing reader/card adapter class.
+*/
+class LIBLOGICALACCESS_API ISO7816FuzzingReaderCardAdapter
+    : public ISO7816ReaderCardAdapter
+{
+  public:
+    ISO7816FuzzingReaderCardAdapter();
 
-		ISO7816FuzzingReaderCardAdapter();
+    virtual std::vector<unsigned char>
+    sendCommand(const std::vector<unsigned char> &command, long timeout = 3000);
 
-		virtual std::vector<unsigned char> sendCommand(const std::vector<unsigned char>& command, long timeout = 3000);
-
-	private:
-		static int index;
-		int currentIndex;
-	};
+  private:
+    static int index;
+    int currentIndex;
+};
 }
 
 #endif /* LOGICALACCESS_ISO7816FUZZINGREADERCARDADAPTER_HPP */

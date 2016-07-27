@@ -10,41 +10,71 @@
 
 namespace logicalaccess
 {
-    class LIBLOGICALACCESS_API NXPAV2KeyDiversification : public NXPKeyDiversification
+class LIBLOGICALACCESS_API NXPAV2KeyDiversification : public NXPKeyDiversification
+{
+  public:
+    virtual void initDiversification(std::vector<unsigned char> identifier, int AID,
+                                     std::shared_ptr<Key> key, unsigned char keyno,
+                                     std::vector<unsigned char> &diversify);
+    virtual std::vector<unsigned char>
+    getDiversifiedKey(std::shared_ptr<Key> key, std::vector<unsigned char> diversify);
+
+    NXPAV2KeyDiversification()
+        : d_revertAID(false){};
+    NXPAV2KeyDiversification(const std::vector<unsigned char> &divInput)
+        : d_revertAID(false)
+        , d_divInput(divInput){};
+    virtual ~NXPAV2KeyDiversification(){};
+
+    virtual std::string getType()
     {
-    public:
-        virtual void initDiversification(std::vector<unsigned char> identifier, int AID, std::shared_ptr<Key> key, unsigned char keyno, std::vector<unsigned char>& diversify);
-        virtual std::vector<unsigned char> getDiversifiedKey(std::shared_ptr<Key> key, std::vector<unsigned char> diversify);
-
-        NXPAV2KeyDiversification() : d_revertAID(false) {};
-        NXPAV2KeyDiversification(const std::vector<unsigned char>& divInput) : d_revertAID(false), d_divInput(divInput) {};
-        virtual ~NXPAV2KeyDiversification() {};
-
-        virtual std::string getType() { return "NXPAV2"; };
-
-        virtual void serialize(boost::property_tree::ptree& parentNode);
-        virtual void unSerialize(boost::property_tree::ptree& node);
-        virtual std::string getDefaultXmlNodeName() const { return "NXPAV2KeyDiversification"; };
-
-		bool getRevertAID() const { return d_revertAID; }
-
-		void setRevertAID(bool revertAID) { d_revertAID = revertAID; }
-
-        const std::vector<unsigned char>& getDivInput() const { return d_divInput; }
-
-        void setDivInput(std::vector<unsigned char> divInput) { d_divInput = divInput; }
-
-        const std::vector<unsigned char>& getSystemIdentifier() const { return d_systemIdentifier; }
-
-        void setSystemIdentifier(std::vector<unsigned char> systemIdentifier) { d_systemIdentifier = systemIdentifier; }
-
-    private:
-		bool d_revertAID;
-
-        std::vector<unsigned char> d_divInput;
-
-        std::vector<unsigned char> d_systemIdentifier;
+        return "NXPAV2";
     };
+
+    virtual void serialize(boost::property_tree::ptree &parentNode);
+    virtual void unSerialize(boost::property_tree::ptree &node);
+    virtual std::string getDefaultXmlNodeName() const
+    {
+        return "NXPAV2KeyDiversification";
+    };
+
+    bool getRevertAID() const
+    {
+        return d_revertAID;
+    }
+
+    void setRevertAID(bool revertAID)
+    {
+        d_revertAID = revertAID;
+    }
+
+    const std::vector<unsigned char> &getDivInput() const
+    {
+        return d_divInput;
+    }
+
+    void setDivInput(std::vector<unsigned char> divInput)
+    {
+        d_divInput = divInput;
+    }
+
+    const std::vector<unsigned char> &getSystemIdentifier() const
+    {
+        return d_systemIdentifier;
+    }
+
+    void setSystemIdentifier(std::vector<unsigned char> systemIdentifier)
+    {
+        d_systemIdentifier = systemIdentifier;
+    }
+
+  private:
+    bool d_revertAID;
+
+    std::vector<unsigned char> d_divInput;
+
+    std::vector<unsigned char> d_systemIdentifier;
+};
 }
 
 #endif

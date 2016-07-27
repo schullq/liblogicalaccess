@@ -28,8 +28,7 @@ STidPRGReaderCardAdapter::adaptAnswer(const std::vector<unsigned char> &answer)
     EXCEPTION_ASSERT_WITH_LOG(answer[0] == 0x02, LibLogicalAccessException,
                               "Invalid 'Start of Frame byte'.");
     EXCEPTION_ASSERT_WITH_LOG(answer[answer.size() - 1] == 0x03,
-                              LibLogicalAccessException,
-                              "Invalid 'End of Frame byte'.");
+                              LibLogicalAccessException, "Invalid 'End of Frame byte'.");
 
     // Drop "Start of Frame" as well as "End of Frame" and "CRC" bytes.
     std::vector<uint8_t> ret(answer.begin() + 1, answer.end() - 2);

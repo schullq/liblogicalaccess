@@ -12,49 +12,48 @@
 
 namespace logicalaccess
 {
-	class MifareUltralightCChip;
+class MifareUltralightCChip;
+
+/**
+ * \brief The Mifare Ultralight C commands class.
+ */
+class LIBLOGICALACCESS_API MifareUltralightCCommands
+    : public virtual MifareUltralightCommands
+{
+  public:
+    /**
+     * \brief Authenticate to the chip.
+     * \param aiToUse The access information to use for authentication.
+     */
+    void authenticate(std::shared_ptr<AccessInfo> aiToUse);
 
     /**
-     * \brief The Mifare Ultralight C commands class.
+     * \brief Change the chip authentication key.
+     * \param aiToWrite The access information to write.
      */
-    class LIBLOGICALACCESS_API MifareUltralightCCommands : public virtual MifareUltralightCommands
-    {
-    public:
+    void changeKey(std::shared_ptr<AccessInfo> aiToWrite);
 
-        /**
-         * \brief Authenticate to the chip.
-         * \param aiToUse The access information to use for authentication.
-         */
-        void authenticate(std::shared_ptr<AccessInfo> aiToUse);
+    /**
+     * \brief Change the chip authentication key.
+     * \param key The new key.
+     */
+    virtual void changeKey(std::shared_ptr<TripleDESKey> key);
 
-        /**
-         * \brief Change the chip authentication key.
-         * \param aiToWrite The access information to write.
-         */
-        void changeKey(std::shared_ptr<AccessInfo> aiToWrite);
+    /**
+     * \brief Set a page as read-only.
+     * \param page The page to lock.
+     */
+    virtual void lockPage(int page);
 
-        /**
-         * \brief Change the chip authentication key.
-         * \param key The new key.
-         */
-        virtual void changeKey(std::shared_ptr<TripleDESKey> key);
+    /**
+     * \brief Authenticate to the chip.
+     * \param authkey The authentication key.
+     */
+    virtual void authenticate(std::shared_ptr<TripleDESKey> authkey) = 0;
 
-        /**
-         * \brief Set a page as read-only.
-         * \param page The page to lock.
-         */
-        virtual void lockPage(int page);
-
-        /**
-         * \brief Authenticate to the chip.
-         * \param authkey The authentication key.
-         */
-        virtual void authenticate(std::shared_ptr<TripleDESKey> authkey) = 0;
-
-	protected:
-
-		std::shared_ptr<MifareUltralightCChip> getMifareUltralightCChip();
-    };
+  protected:
+    std::shared_ptr<MifareUltralightCChip> getMifareUltralightCChip();
+};
 }
 
 #endif

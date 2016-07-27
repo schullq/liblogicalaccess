@@ -76,9 +76,9 @@ void KeyStorage::unSerialize(boost::property_tree::ptree &node)
     auto n = key_storage.get_child_optional("metadata");
     if (n)
     {
-        for (auto const &node: *n)
+        for (auto const &node : *n)
         {
-            std::string pname = node.first;
+            std::string pname  = node.first;
             std::string pvalue = node.second.data();
 
             addMetadata(pname, pvalue);

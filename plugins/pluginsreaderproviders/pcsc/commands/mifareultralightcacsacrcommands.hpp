@@ -11,27 +11,27 @@
 
 namespace logicalaccess
 {
+/**
+ * \brief The Mifare Ultralight C commands class for ACS ACR reader.
+ */
+class LIBLOGICALACCESS_API MifareUltralightCACSACRCommands
+    : public MifareUltralightCPCSCCommands
+{
+  public:
     /**
-     * \brief The Mifare Ultralight C commands class for ACS ACR reader.
+     * \brief Constructor.
      */
-    class LIBLOGICALACCESS_API MifareUltralightCACSACRCommands : public MifareUltralightCPCSCCommands
-    {
-    public:
+    MifareUltralightCACSACRCommands();
 
-        /**
-         * \brief Constructor.
-         */
-        MifareUltralightCACSACRCommands();
+    /**
+     * \brief Destructor.
+     */
+    virtual ~MifareUltralightCACSACRCommands();
 
-        /**
-         * \brief Destructor.
-         */
-        virtual ~MifareUltralightCACSACRCommands();
-
-    protected:
-
-        virtual std::vector<unsigned char> sendGenericCommand(const std::vector<unsigned char>& data);
-    };
+  protected:
+    virtual std::vector<unsigned char>
+    sendGenericCommand(const std::vector<unsigned char> &data);
+};
 }
 
 #endif /* LOGICALACCESS_MIFAREULTRALIGHTCACSACRCOMMANDS_HPP */

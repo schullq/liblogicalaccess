@@ -13,36 +13,40 @@
 namespace logicalaccess
 {
 #define CHIP_SAM "SAM"
+/**
+ * \brief The SAM chip class.
+ */
+class LIBLOGICALACCESS_API SAMChip : public Chip
+{
+  public:
     /**
-     * \brief The SAM chip class.
+     * \brief Constructor.
      */
-    class LIBLOGICALACCESS_API SAMChip : public Chip
+    SAMChip()
+        : Chip(CHIP_SAM){};
+
+    /**
+     * \brief Constructor.
+     */
+    SAMChip(std::string t)
+        : Chip(t){};
+
+    /**
+     * \brief Destructor.
+     */
+    ~SAMChip(){};
+
+    /**
+     * \brief Get the generic card type.
+     * \return The generic card type.
+     */
+    virtual std::string getGenericCardType() const
     {
-    public:
-
-        /**
-         * \brief Constructor.
-         */
-        SAMChip() : Chip(CHIP_SAM) {};
-
-        /**
-         * \brief Constructor.
-         */
-        SAMChip(std::string t) : Chip(t) {};
-
-        /**
-         * \brief Destructor.
-         */
-        ~SAMChip() {};
-
-        /**
-         * \brief Get the generic card type.
-         * \return The generic card type.
-         */
-        virtual std::string getGenericCardType() const { return CHIP_SAM; };
-
-    protected:
+        return CHIP_SAM;
     };
+
+  protected:
+};
 }
 
 #endif /* LOGICALACCESS_DESFIREEV1CHIP_HPP */

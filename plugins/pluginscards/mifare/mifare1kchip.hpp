@@ -11,27 +11,26 @@
 
 namespace logicalaccess
 {
-#define CHIP_MIFARE1K	"Mifare1K"
+#define CHIP_MIFARE1K "Mifare1K"
+
+/**
+ * \brief The 1k Mifare base chip class.
+ */
+class LIBLOGICALACCESS_API Mifare1KChip : public MifareChip
+{
+  public:
+    /**
+     * \brief Constructor.
+     */
+    Mifare1KChip();
 
     /**
-     * \brief The 1k Mifare base chip class.
+     * \brief Destructor.
      */
-    class LIBLOGICALACCESS_API Mifare1KChip : public MifareChip
-    {
-    public:
+    virtual ~Mifare1KChip();
 
-        /**
-         * \brief Constructor.
-         */
-        Mifare1KChip();
-
-        /**
-         * \brief Destructor.
-         */
-        virtual ~Mifare1KChip();
-
-    protected:
-    };
+  protected:
+};
 }
 
 #endif /* LOGICALACCESS_MIFARE1KCHIP_HPP */

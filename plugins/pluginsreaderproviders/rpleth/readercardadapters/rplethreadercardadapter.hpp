@@ -17,46 +17,48 @@
 
 namespace logicalaccess
 {
+/**
+ * \brief A default Rpleth reader/card adapter class.
+ */
+class LIBLOGICALACCESS_API RplethReaderCardAdapter : public ReaderCardAdapter
+{
+  public:
     /**
-     * \brief A default Rpleth reader/card adapter class.
+     * \brief Constructor.
      */
-    class LIBLOGICALACCESS_API RplethReaderCardAdapter : public ReaderCardAdapter
-    {
-    public:
+    RplethReaderCardAdapter();
 
-        /**
-         * \brief Constructor.
-         */
-        RplethReaderCardAdapter();
+    /**
+     * \brief Destructor.
+     */
+    virtual ~RplethReaderCardAdapter();
 
-        /**
-         * \brief Destructor.
-         */
-        virtual ~RplethReaderCardAdapter();
+    /**
+     * \brief Adapt the command to send to the reader.
+     * \param command The command to send.
+     * \return The adapted command to send.
+     */
+    virtual std::vector<unsigned char>
+    adaptCommand(const std::vector<unsigned char> &command);
 
-        /**
-         * \brief Adapt the command to send to the reader.
-         * \param command The command to send.
-         * \return The adapted command to send.
-         */
-        virtual std::vector<unsigned char> adaptCommand(const std::vector<unsigned char>& command);
+    /**
+     * \brief Adapt the asnwer received from the reader.
+     * \param answer The answer received.
+     * \return The adapted answer received.
+     */
+    virtual std::vector<unsigned char>
+    adaptAnswer(const std::vector<unsigned char> &answer);
 
-        /**
-         * \brief Adapt the asnwer received from the reader.
-         * \param answer The answer received.
-         * \return The adapted answer received.
-         */
-        virtual std::vector<unsigned char> adaptAnswer(const std::vector<unsigned char>& answer);
-
-		/**
-         * \brief Send command to the reader.
-         * \param data The command.
-		 * \param waitanswer If the command is waiting a answer.
-		 * \param timeout Time until stop to wait.
-         * \return The data received.
-         */
-        std::vector<unsigned char> sendRplethCommand(const std::vector<unsigned char>& data, bool waitanswer, long timeout = 2000);
-    };
+    /**
+* \brief Send command to the reader.
+* \param data The command.
+     * \param waitanswer If the command is waiting a answer.
+     * \param timeout Time until stop to wait.
+* \return The data received.
+*/
+    std::vector<unsigned char> sendRplethCommand(const std::vector<unsigned char> &data,
+                                                 bool waitanswer, long timeout = 2000);
+};
 }
 
 #endif /* LOGICALACCESS_DEFAULTRPLETHREADERCARDADAPTER_HPP */

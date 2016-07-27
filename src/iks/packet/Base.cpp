@@ -36,8 +36,8 @@ BaseResponse::BaseResponse(uint16_t opcode, uint16_t status)
 {
     if (status_ != SMSG_STATUS_SUCCESS)
     {
-        THROW_EXCEPTION_WITH_LOG(IKSException, "Invalid response from server: " +
-                                                   strstatus(status_));
+        THROW_EXCEPTION_WITH_LOG(IKSException,
+                                 "Invalid response from server: " + strstatus(status_));
     }
 }
 

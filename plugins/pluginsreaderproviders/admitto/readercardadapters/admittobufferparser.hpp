@@ -14,15 +14,16 @@
 
 namespace logicalaccess
 {
-    class LIBLOGICALACCESS_API AdmittoBufferParser : public CircularBufferParser
-    {
-    public:
-        AdmittoBufferParser() {};
+class LIBLOGICALACCESS_API AdmittoBufferParser : public CircularBufferParser
+{
+  public:
+    AdmittoBufferParser(){};
 
-        virtual ~AdmittoBufferParser() {};
+    virtual ~AdmittoBufferParser(){};
 
-        virtual std::vector<unsigned char> getValidBuffer(boost::circular_buffer<unsigned char>& circular_buffer);
-    };
+    virtual std::vector<unsigned char>
+    getValidBuffer(boost::circular_buffer<unsigned char> &circular_buffer);
+};
 }
 
 #endif /* ADMITTOBUFFERPARSER_HPP */

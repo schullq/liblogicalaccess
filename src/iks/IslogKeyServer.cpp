@@ -14,17 +14,15 @@ using namespace logicalaccess::iks;
 
 IslogKeyServer &IslogKeyServer::fromGlobalSettings()
 {
-    static iks::IslogKeyServer iks(pre_configuration_.ip, pre_configuration_.port,
-                                   pre_configuration_.client_cert,
-                                   pre_configuration_.client_key,
-                                   pre_configuration_.root_ca);
+    static iks::IslogKeyServer iks(
+        pre_configuration_.ip, pre_configuration_.port, pre_configuration_.client_cert,
+        pre_configuration_.client_key, pre_configuration_.root_ca);
     return iks;
 }
 
 IslogKeyServer::IslogKeyServer(const std::string &ip, uint16_t port,
                                const std::string &client_cert,
-                               const std::string &client_key,
-                               const std::string &root_ca)
+                               const std::string &client_key, const std::string &root_ca)
     :
 #ifdef ENABLE_SSLTRANSPORT
     ssl_ctx_(boost::asio::ssl::context::tlsv12_client)
@@ -111,34 +109,30 @@ std::vector<uint8_t> IslogKeyServer::aes_decrypt(const std::vector<uint8_t> &in,
     return ret->bytes_;
 }
 
-std::vector<uint8_t>
-IslogKeyServer::des_cbc_encrypt(const std::vector<uint8_t> &in,
-                                const std::string &key_name,
-                                const std::array<uint8_t, 8> &iv)
+std::vector<uint8_t> IslogKeyServer::des_cbc_encrypt(const std::vector<uint8_t> &in,
+                                                     const std::string &key_name,
+                                                     const std::array<uint8_t, 8> &iv)
 {
     return des_crypto(in, key_name, iv, false, false);
 }
 
-std::vector<uint8_t>
-IslogKeyServer::des_cbc_decrypt(const std::vector<uint8_t> &in,
-                                const std::string &key_name,
-                                const std::array<uint8_t, 8> &iv)
+std::vector<uint8_t> IslogKeyServer::des_cbc_decrypt(const std::vector<uint8_t> &in,
+                                                     const std::string &key_name,
+                                                     const std::array<uint8_t, 8> &iv)
 {
     return des_crypto(in, key_name, iv, false, true);
 }
 
-std::vector<uint8_t>
-IslogKeyServer::des_ecb_encrypt(const std::vector<uint8_t> &in,
-                                const std::string &key_name,
-                                const std::array<uint8_t, 8> &iv)
+std::vector<uint8_t> IslogKeyServer::des_ecb_encrypt(const std::vector<uint8_t> &in,
+                                                     const std::string &key_name,
+                                                     const std::array<uint8_t, 8> &iv)
 {
     return des_crypto(in, key_name, iv, true, false);
 }
 
-std::vector<uint8_t>
-IslogKeyServer::des_ecb_decrypt(const std::vector<uint8_t> &in,
-                                const std::string &key_name,
-                                const std::array<uint8_t, 8> &iv)
+std::vector<uint8_t> IslogKeyServer::des_ecb_decrypt(const std::vector<uint8_t> &in,
+                                                     const std::string &key_name,
+                                                     const std::array<uint8_t, 8> &iv)
 {
     return des_crypto(in, key_name, iv, true, true);
 }
@@ -152,9 +146,8 @@ std::vector<uint8_t> IslogKeyServer::des_crypto(const std::vector<uint8_t> &in,
     cmd.key_name_ = key_name;
     cmd.iv_       = iv;
     cmd.payload_  = in;
-    cmd.flags_ =
-        use_ecb ? COMMAND_DES_ENCRYPT_FLAG_ECB : COMMAND_DES_ENCRYPT_FLAG_CBC;
-    cmd.decrypt_ = decrypt;
+    cmd.flags_    = use_ecb ? COMMAND_DES_ENCRYPT_FLAG_ECB : COMMAND_DES_ENCRYPT_FLAG_CBC;
+    cmd.decrypt_  = decrypt;
 
     auto ret = std::dynamic_pointer_cast<DesEncryptResponse>(transact(cmd));
     assert(ret && ret->opcode_ == SMSG_OP_DES_ENCRYPT);

@@ -4,38 +4,39 @@
 #include "smartidreaderprovider.hpp"
 #include "logicalaccess/logicalaccess_api.hpp"
 
-extern "C"
+extern "C" {
+LIBLOGICALACCESS_API char *getLibraryName()
 {
-    LIBLOGICALACCESS_API char *getLibraryName()
-    {
-        return (char *)"SmartID";
-    }
+    return (char *)"SmartID";
+}
 
-    LIBLOGICALACCESS_API void getSmartIDReader(std::shared_ptr<logicalaccess::ReaderProvider>* rp)
+LIBLOGICALACCESS_API void
+getSmartIDReader(std::shared_ptr<logicalaccess::ReaderProvider> *rp)
+{
+    if (rp != NULL)
     {
-        if (rp != NULL)
+        *rp = logicalaccess::SmartIDReaderProvider::getSingletonInstance();
+    }
+}
+
+LIBLOGICALACCESS_API bool getReaderInfoAt(unsigned int index, char *readername,
+                                          size_t readernamelen, void **getterfct)
+{
+    bool ret = false;
+    if (readername != NULL && readernamelen == PLUGINOBJECT_MAXLEN && getterfct != NULL)
+    {
+        switch (index)
         {
-            *rp = logicalaccess::SmartIDReaderProvider::getSingletonInstance();
+        case 0:
+        {
+            *getterfct = (void *)&getSmartIDReader;
+            sprintf(readername, READER_SMARTID);
+            ret = true;
+        }
+        break;
         }
     }
 
-    LIBLOGICALACCESS_API bool getReaderInfoAt(unsigned int index, char* readername, size_t readernamelen, void** getterfct)
-    {
-        bool ret = false;
-        if (readername != NULL && readernamelen == PLUGINOBJECT_MAXLEN && getterfct != NULL)
-        {
-            switch (index)
-            {
-            case 0:
-            {
-                *getterfct = (void*)&getSmartIDReader;
-                sprintf(readername, READER_SMARTID);
-                ret = true;
-            }
-                break;
-            }
-        }
-
-        return ret;
-    }
+    return ret;
+}
 }

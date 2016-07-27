@@ -11,10 +11,10 @@
 #include "mifarepluschip.hpp"
 #include <algorithm>
 
-logicalaccess::MifarePlusAESAuth::MifarePlusAESAuth(std::shared_ptr<ReaderCardAdapter> rca) :
-        rca_(rca)
+logicalaccess::MifarePlusAESAuth::MifarePlusAESAuth(
+    std::shared_ptr<ReaderCardAdapter> rca)
+    : rca_(rca)
 {
-
 }
 
 bool logicalaccess::MifarePlusAESAuth::AESAuthenticate(std::shared_ptr<AES128Key> key,
@@ -33,11 +33,13 @@ bool logicalaccess::MifarePlusAESAuth::AESAuthenticate(std::shared_ptr<AES128Key
 
     ret = rca_->sendCommand(command);
     LOG(DEBUGS) << "AES Authenticate... " << ret;
-    EXCEPTION_ASSERT_WITH_LOG(ret.size() > 16, LibLogicalAccessException, "Not enough data in buffer.");
+    EXCEPTION_ASSERT_WITH_LOG(ret.size() > 16, LibLogicalAccessException,
+                              "Not enough data in buffer.");
 
     ByteVector rnd_b(ret.begin() + 1, ret.begin() + 17);
-    return aes_auth_step2(AESHelper::AESDecrypt(rnd_b, ByteVector(key->getData(), key->getData() + 16), {}),
-                          key);
+    return aes_auth_step2(
+        AESHelper::AESDecrypt(rnd_b, ByteVector(key->getData(), key->getData() + 16), {}),
+        key);
 }
 
 bool logicalaccess::MifarePlusAESAuth::aes_auth_step2(std::vector<uint8_t> rnd_b,
@@ -50,7 +52,8 @@ bool logicalaccess::MifarePlusAESAuth::aes_auth_step2(std::vector<uint8_t> rnd_b
     data.insert(data.end(), rnd_a.begin(), rnd_a.end());
     data.insert(data.end(), rnd_b.begin(), rnd_b.end());
 
-    ByteVector result = AESHelper::AESEncrypt(data, ByteVector(key->getData(), key->getData() + 16), {});
+    ByteVector result =
+        AESHelper::AESEncrypt(data, ByteVector(key->getData(), key->getData() + 16), {});
     ByteVector command;
 
     command.push_back(0x72);
@@ -59,7 +62,8 @@ bool logicalaccess::MifarePlusAESAuth::aes_auth_step2(std::vector<uint8_t> rnd_b
     ByteVector ret;
     ret = rca_->sendCommand(command);
     LOG(DEBUGS) << "AES Authenticate STEP 2... " << ret;
-    EXCEPTION_ASSERT_WITH_LOG(ret.size() > 16, LibLogicalAccessException, "Not enough data in buffer.");
+    EXCEPTION_ASSERT_WITH_LOG(ret.size() > 16, LibLogicalAccessException,
+                              "Not enough data in buffer.");
 
     // make sure the result from the result is as expected.
     ByteVector rnd_a_reader(ret.begin() + 1, ret.begin() + 17);
@@ -73,9 +77,8 @@ bool logicalaccess::MifarePlusAESAuth::aes_auth_final(const ByteVector &rnd_a,
     // If we received garbage, the AES code may throw. This means auth failure.
     try
     {
-        auto tmp_rnd_a_reader = AESHelper::AESDecrypt(rnd_a_reader,
-                                                      ByteVector(key->getData(), key->getData() + 16),
-                                                      {});
+        auto tmp_rnd_a_reader = AESHelper::AESDecrypt(
+            rnd_a_reader, ByteVector(key->getData(), key->getData() + 16), {});
         std::rotate(tmp_rnd_a_reader.rbegin(), tmp_rnd_a_reader.rbegin() + 1,
                     tmp_rnd_a_reader.rend());
 

@@ -11,29 +11,30 @@
 
 namespace logicalaccess
 {
+/**
+* \brief The Mifare Ultralight C commands class for Omnikey xx22 reader.
+*/
+class LIBLOGICALACCESS_API MifareUltralightCOmnikeyXX22Commands
+    : public MifareUltralightPCSCCommands,
+      public MifareUltralightCCommands
+{
+  public:
     /**
-    * \brief The Mifare Ultralight C commands class for Omnikey xx22 reader.
+    * \brief Constructor.
     */
-    class LIBLOGICALACCESS_API MifareUltralightCOmnikeyXX22Commands : public MifareUltralightPCSCCommands, public MifareUltralightCCommands
-    {
-    public:
+    MifareUltralightCOmnikeyXX22Commands();
 
-        /**
-        * \brief Constructor.
-        */
-        MifareUltralightCOmnikeyXX22Commands();
+    /**
+    * \brief Destructor.
+    */
+    virtual ~MifareUltralightCOmnikeyXX22Commands();
 
-        /**
-        * \brief Destructor.
-        */
-        virtual ~MifareUltralightCOmnikeyXX22Commands();
-
-        /**
-        * \brief Authenticate to the chip.
-        * \param authkey The authentication key.
-        */
-        virtual void authenticate(std::shared_ptr<TripleDESKey> authkey);
-    };
+    /**
+    * \brief Authenticate to the chip.
+    * \param authkey The authentication key.
+    */
+    virtual void authenticate(std::shared_ptr<TripleDESKey> authkey);
+};
 }
 
 #endif /* LOGICALACCESS_MIFAREULTRALIGHTCOMNIKEYXX22COMMANDS_HPP */

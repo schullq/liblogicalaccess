@@ -12,41 +12,43 @@
 
 namespace logicalaccess
 {
+/**
+ * \brief The Mifare Ultralight C commands class for PCSC reader.
+ */
+class LIBLOGICALACCESS_API MifareUltralightCPCSCCommands
+    : public MifareUltralightPCSCCommands,
+      public MifareUltralightCCommands
+{
+  public:
     /**
-     * \brief The Mifare Ultralight C commands class for PCSC reader.
+     * \brief Constructor.
      */
-    class LIBLOGICALACCESS_API MifareUltralightCPCSCCommands : public MifareUltralightPCSCCommands, public MifareUltralightCCommands
-    {
-    public:
+    MifareUltralightCPCSCCommands();
 
-        /**
-         * \brief Constructor.
-         */
-        MifareUltralightCPCSCCommands();
+    /**
+     * \brief Destructor.
+     */
+    virtual ~MifareUltralightCPCSCCommands();
 
-        /**
-         * \brief Destructor.
-         */
-        virtual ~MifareUltralightCPCSCCommands();
+    /**
+     * \brief Authenticate to the chip.
+     * \param authkey The authentication key.
+     */
+    virtual void authenticate(std::shared_ptr<TripleDESKey> authkey);
 
-        /**
-         * \brief Authenticate to the chip.
-         * \param authkey The authentication key.
-         */
-        virtual void authenticate(std::shared_ptr<TripleDESKey> authkey);
+  protected:
+    virtual void startGenericSession();
 
-    protected:
+    virtual void stopGenericSession();
 
-		virtual void startGenericSession();
+    virtual std::vector<unsigned char>
+    sendGenericCommand(const std::vector<unsigned char> &data);
 
-		virtual void stopGenericSession();
+    virtual std::vector<unsigned char> authenticate_PICC1();
 
-        virtual std::vector<unsigned char> sendGenericCommand(const std::vector<unsigned char>& data);
-
-        virtual std::vector<unsigned char> authenticate_PICC1();
-
-        virtual std::vector<unsigned char> authenticate_PICC2(const std::vector<unsigned char>& encRndAB);
-    };
+    virtual std::vector<unsigned char>
+    authenticate_PICC2(const std::vector<unsigned char> &encRndAB);
+};
 }
 
 #endif /* LOGICALACCESS_MIFAREULTRALIGHTCPCSCCOMMANDS_HPP */

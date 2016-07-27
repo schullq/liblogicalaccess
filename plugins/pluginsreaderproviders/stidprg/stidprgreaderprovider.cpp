@@ -48,8 +48,7 @@ bool STidPRGReaderProvider::refreshReaderList()
     {
         std::shared_ptr<STidPRGReaderUnit> unit(new STidPRGReaderUnit());
         std::shared_ptr<SerialPortDataTransport> dataTransport =
-            std::dynamic_pointer_cast<SerialPortDataTransport>(
-                unit->getDataTransport());
+            std::dynamic_pointer_cast<SerialPortDataTransport>(unit->getDataTransport());
         assert(dataTransport);
         dataTransport->setSerialPort(*i);
         unit->setReaderProvider(std::weak_ptr<ReaderProvider>(shared_from_this()));

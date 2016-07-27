@@ -15,39 +15,41 @@
 
 namespace logicalaccess
 {
-#define CHIP_LEGICPRIME		"LegicPrime"
+#define CHIP_LEGICPRIME "LegicPrime"
+
+/**
+ * \brief The Legic Prime base chip class.
+ */
+class LIBLOGICALACCESS_API LegicPrimeChip : public Chip
+{
+  public:
+    /**
+     * \brief Constructor.
+     */
+    LegicPrimeChip();
 
     /**
-     * \brief The Legic Prime base chip class.
+     * \brief Destructor.
      */
-    class LIBLOGICALACCESS_API LegicPrimeChip : public Chip
+    virtual ~LegicPrimeChip();
+
+    /**
+     * \brief Get the generic card type.
+     * \return The generic card type.
+     */
+    virtual std::string getGenericCardType() const
     {
-    public:
-
-        /**
-         * \brief Constructor.
-         */
-        LegicPrimeChip();
-
-        /**
-         * \brief Destructor.
-         */
-        virtual ~LegicPrimeChip();
-
-        /**
-         * \brief Get the generic card type.
-         * \return The generic card type.
-         */
-        virtual std::string getGenericCardType() const { return CHIP_LEGICPRIME; };
-
-        /**
-         * \brief Get the root location node.
-         * \return The root location node.
-         */
-        virtual std::shared_ptr<LocationNode> getRootLocationNode();
-
-    protected:
+        return CHIP_LEGICPRIME;
     };
+
+    /**
+     * \brief Get the root location node.
+     * \return The root location node.
+     */
+    virtual std::shared_ptr<LocationNode> getRootLocationNode();
+
+  protected:
+};
 }
 
 #endif

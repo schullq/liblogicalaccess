@@ -13,15 +13,13 @@
 
 namespace logicalaccess
 {
-    /**
-     * \brief The CPS3 commands class.
-     */
-	class LIBLOGICALACCESS_API CPS3Commands : public Commands
-    {
-    public:
-
-		
-    };
+/**
+ * \brief The CPS3 commands class.
+ */
+class LIBLOGICALACCESS_API CPS3Commands : public Commands
+{
+  public:
+};
 }
 
 #endif

@@ -12,7 +12,6 @@ STidPRGReaderUnitConfiguration::STidPRGReaderUnitConfiguration()
 
 void STidPRGReaderUnitConfiguration::resetConfiguration()
 {
-
 }
 
 void STidPRGReaderUnitConfiguration::serialize(boost::property_tree::ptree &parentNode)

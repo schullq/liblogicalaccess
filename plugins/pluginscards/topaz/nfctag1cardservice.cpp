@@ -12,54 +12,62 @@
 
 namespace logicalaccess
 {
-	void NFCTag1CardService::writeNDEF(std::shared_ptr<logicalaccess::NdefMessage> records)
-	{
-        std::shared_ptr<logicalaccess::StorageCardService> storage = std::dynamic_pointer_cast<StorageCardService>(getTopazChip()->getService(CST_STORAGE));
-        std::shared_ptr<logicalaccess::TopazLocation> location(new logicalaccess::TopazLocation);
-        unsigned short nbblocks = getTopazChip()->getNbBlocks();
-        location->page = 1;
-		std::vector<unsigned char> data;
+void NFCTag1CardService::writeNDEF(std::shared_ptr<logicalaccess::NdefMessage> records)
+{
+    std::shared_ptr<logicalaccess::StorageCardService> storage =
+        std::dynamic_pointer_cast<StorageCardService>(
+            getTopazChip()->getService(CST_STORAGE));
+    std::shared_ptr<logicalaccess::TopazLocation> location(
+        new logicalaccess::TopazLocation);
+    unsigned short nbblocks = getTopazChip()->getNbBlocks();
+    location->page          = 1;
+    std::vector<unsigned char> data;
 
-        // Capability Container
-        data.push_back(0xE1); // NDEF present on tag
-        data.push_back(0x10); // Support version 1.0
-        data.push_back(static_cast<unsigned char>(nbblocks - 1)); // Tag Type
-        data.push_back(0x00); // No Lock
+    // Capability Container
+    data.push_back(0xE1);                                     // NDEF present on tag
+    data.push_back(0x10);                                     // Support version 1.0
+    data.push_back(static_cast<unsigned char>(nbblocks - 1)); // Tag Type
+    data.push_back(0x00);                                     // No Lock
 
-        std::vector<unsigned char> tlv = NdefMessage::NdefMessageToTLV(records);
-        data.insert(data.end(), tlv.begin(), tlv.end());
+    std::vector<unsigned char> tlv = NdefMessage::NdefMessageToTLV(records);
+    data.insert(data.end(), tlv.begin(), tlv.end());
 
-        storage->writeData(location, std::shared_ptr<logicalaccess::AccessInfo>(), std::shared_ptr<logicalaccess::AccessInfo>(), data, CB_AUTOSWITCHAREA);
-	}
+    storage->writeData(location, std::shared_ptr<logicalaccess::AccessInfo>(),
+                       std::shared_ptr<logicalaccess::AccessInfo>(), data,
+                       CB_AUTOSWITCHAREA);
+}
 
-	std::shared_ptr<logicalaccess::NdefMessage> NFCTag1CardService::readNDEF()
-	{
-		std::shared_ptr<logicalaccess::TopazCommands> tcmd(getTopazChip()->getTopazCommands());
-		std::shared_ptr<logicalaccess::NdefMessage> ndef;
-		
-        std::vector<unsigned char> CC = tcmd->readPage(1);
-		// Only take care if NDEF is present
-		if (CC.size() >= 4 && CC[0] == 0xE1)
-		{
-			if (CC[2] > 0)
-			{
-				// Read all available data from data blocks
-                // Limited to block 0xE for now
-                std::vector<unsigned char> data = tcmd->readPages(1, 1 + ((CC[2] <= 14) ? CC[2] : 14));
-                data = std::vector<unsigned char>(data.begin() + 4, data.end());
-                ndef = NdefMessage::TLVToNdefMessage(data);
-			}
-		}
+std::shared_ptr<logicalaccess::NdefMessage> NFCTag1CardService::readNDEF()
+{
+    std::shared_ptr<logicalaccess::TopazCommands> tcmd(
+        getTopazChip()->getTopazCommands());
+    std::shared_ptr<logicalaccess::NdefMessage> ndef;
 
-		return ndef;
-	}
+    std::vector<unsigned char> CC = tcmd->readPage(1);
+    // Only take care if NDEF is present
+    if (CC.size() >= 4 && CC[0] == 0xE1)
+    {
+        if (CC[2] > 0)
+        {
+            // Read all available data from data blocks
+            // Limited to block 0xE for now
+            std::vector<unsigned char> data =
+                tcmd->readPages(1, 1 + ((CC[2] <= 14) ? CC[2] : 14));
+            data = std::vector<unsigned char>(data.begin() + 4, data.end());
+            ndef = NdefMessage::TLVToNdefMessage(data);
+        }
+    }
 
-	void NFCTag1CardService::eraseNDEF()
-	{
-		std::shared_ptr<logicalaccess::TopazCommands> tcmd(getTopazChip()->getTopazCommands());
+    return ndef;
+}
 
-		// Overwrite capability container
-		std::vector<unsigned char> CC(8, 0x00);
-		tcmd->writePage(1, CC);
-	}
+void NFCTag1CardService::eraseNDEF()
+{
+    std::shared_ptr<logicalaccess::TopazCommands> tcmd(
+        getTopazChip()->getTopazCommands());
+
+    // Overwrite capability container
+    std::vector<unsigned char> CC(8, 0x00);
+    tcmd->writePage(1, CC);
+}
 }

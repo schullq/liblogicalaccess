@@ -17,29 +17,31 @@
 
 namespace logicalaccess
 {
-    MifareUltralightCSpringCardCommands::MifareUltralightCSpringCardCommands()
-        : MifareUltralightCPCSCCommands()
-    {
-    }
+MifareUltralightCSpringCardCommands::MifareUltralightCSpringCardCommands()
+    : MifareUltralightCPCSCCommands()
+{
+}
 
-    MifareUltralightCSpringCardCommands::~MifareUltralightCSpringCardCommands()
-    {
-    }
+MifareUltralightCSpringCardCommands::~MifareUltralightCSpringCardCommands()
+{
+}
 
-	void MifareUltralightCSpringCardCommands::startGenericSession()
-	{
-		// Suspend card tracking
-		getPCSCReaderCardAdapter()->sendAPDUCommand(0xFF, 0xFB, 0x01, 0x00);
-	}
+void MifareUltralightCSpringCardCommands::startGenericSession()
+{
+    // Suspend card tracking
+    getPCSCReaderCardAdapter()->sendAPDUCommand(0xFF, 0xFB, 0x01, 0x00);
+}
 
-	void MifareUltralightCSpringCardCommands::stopGenericSession()
-	{
-		// Resume card tracking
-		getPCSCReaderCardAdapter()->sendAPDUCommand(0xFF, 0xFB, 0x00, 0x00);
-	}
+void MifareUltralightCSpringCardCommands::stopGenericSession()
+{
+    // Resume card tracking
+    getPCSCReaderCardAdapter()->sendAPDUCommand(0xFF, 0xFB, 0x00, 0x00);
+}
 
-    std::vector<unsigned char> MifareUltralightCSpringCardCommands::sendGenericCommand(const std::vector<unsigned char>& data)
-    {
-        return getPCSCReaderCardAdapter()->sendAPDUCommand(0xFF, 0xFE, 0x01, 0x08, static_cast<unsigned char>(data.size()), data);
-    }
+std::vector<unsigned char> MifareUltralightCSpringCardCommands::sendGenericCommand(
+    const std::vector<unsigned char> &data)
+{
+    return getPCSCReaderCardAdapter()->sendAPDUCommand(
+        0xFF, 0xFE, 0x01, 0x08, static_cast<unsigned char>(data.size()), data);
+}
 }

@@ -10,63 +10,67 @@
 
 namespace logicalaccess
 {
-    std::shared_ptr<MifareUltralightChip> MifareUltralightCommands::getMifareUltralightChip()
+std::shared_ptr<MifareUltralightChip> MifareUltralightCommands::getMifareUltralightChip()
+{
+    return std::dynamic_pointer_cast<MifareUltralightChip>(getChip());
+}
+
+std::vector<unsigned char> MifareUltralightCommands::readPages(int start_page,
+                                                               int stop_page)
+{
+    std::vector<unsigned char> ret;
+
+    if (start_page > stop_page)
     {
-        return std::dynamic_pointer_cast<MifareUltralightChip>(getChip());
+        THROW_EXCEPTION_WITH_LOG(std::invalid_argument,
+                                 "Start page can't be greater than stop page.");
     }
 
-    std::vector<unsigned char> MifareUltralightCommands::readPages(int start_page, int stop_page)
+    for (int i = start_page; i <= stop_page; ++i)
     {
-		std::vector<unsigned char> ret;
-
-        if (start_page > stop_page)
+        std::vector<unsigned char> data = readPage(i);
+        // Some commands implementation returns more than one block (eg. PC/SC)
+        if (data.size() > 4)
         {
-            THROW_EXCEPTION_WITH_LOG(std::invalid_argument, "Start page can't be greater than stop page.");
+            i += static_cast<int>((data.size() + 3) / 4) - 1;
         }
-
-        for (int i = start_page; i <= stop_page; ++i)
-        {
-            std::vector<unsigned char> data = readPage(i);
-            // Some commands implementation returns more than one block (eg. PC/SC)
-            if (data.size() > 4)
-            {
-                i += static_cast<int>((data.size() + 3) / 4) - 1;
-            }
-			ret.insert(ret.end(), data.begin(), data.end());
-        }
-
-        return ret;
+        ret.insert(ret.end(), data.begin(), data.end());
     }
 
-    void MifareUltralightCommands::writePages(int start_page, int stop_page, const std::vector<unsigned char>& buf)
-    {
-        if (start_page > stop_page)
-        {
-            THROW_EXCEPTION_WITH_LOG(std::invalid_argument, "Start page can't be greater than stop page.");
-        }
+    return ret;
+}
 
-        size_t offset = 0;
-        for (int i = start_page; i <= stop_page; ++i)
-        {
-			std::vector<unsigned char> tmp(buf.begin() + offset, buf.begin() + offset + 4);
-			writePage(i, tmp);
-            offset += 4;
-        }
+void MifareUltralightCommands::writePages(int start_page, int stop_page,
+                                          const std::vector<unsigned char> &buf)
+{
+    if (start_page > stop_page)
+    {
+        THROW_EXCEPTION_WITH_LOG(std::invalid_argument,
+                                 "Start page can't be greater than stop page.");
     }
 
-    void MifareUltralightCommands::lockPage(int page)
+    size_t offset = 0;
+    for (int i = start_page; i <= stop_page; ++i)
     {
-        std::vector<unsigned char> lockbits(4, 0x00);
-
-        if (page >= 3 && page <= 7)
-        {
-            lockbits[2] |= static_cast<unsigned char>(1 << page);
-        }
-        else if (page >= 8 && page <= 15)
-        {
-            lockbits[3] |= static_cast<unsigned char>(1 << (page - 8));
-        }
-
-        writePage(2, lockbits);
+        std::vector<unsigned char> tmp(buf.begin() + offset, buf.begin() + offset + 4);
+        writePage(i, tmp);
+        offset += 4;
     }
+}
+
+void MifareUltralightCommands::lockPage(int page)
+{
+    std::vector<unsigned char> lockbits(4, 0x00);
+
+    if (page >= 3 && page <= 7)
+    {
+        lockbits[2] |= static_cast<unsigned char>(1 << page);
+    }
+    else if (page >= 8 && page <= 15)
+    {
+        lockbits[3] |= static_cast<unsigned char>(1 << (page - 8));
+    }
+
+    writePage(2, lockbits);
+}
 }

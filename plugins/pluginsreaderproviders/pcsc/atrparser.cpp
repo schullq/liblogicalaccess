@@ -25,25 +25,27 @@ ATRParser::ATRParser(const std::vector<uint8_t> &atr)
     register_hardcoded_atr("3B8F8001804F0CA00000030603FFA00000000034",
                            "MifarePlus_SL1_4K", PCSC_RUT_SPRINGCARD);
     register_hardcoded_atr("3B878001C1052F2F0035C730", "MifarePlus_SL3_2K");
-	register_hardcoded_atr("3BF59100FF918171FE400041080000000D", "Mifare1K");
-	register_hardcoded_atr("3BF59100FF918171FE400041180000001D", "Mifare4K");
-	register_hardcoded_atr("3BF59100FF918171FE400041880000008D", "Mifare1K");
-	register_hardcoded_atr("3B09410411DD822F000088", "Mifare1K");
+    register_hardcoded_atr("3BF59100FF918171FE400041080000000D", "Mifare1K");
+    register_hardcoded_atr("3BF59100FF918171FE400041180000001D", "Mifare4K");
+    register_hardcoded_atr("3BF59100FF918171FE400041880000008D", "Mifare1K");
+    register_hardcoded_atr("3B09410411DD822F000088", "Mifare1K");
     register_hardcoded_atr("3B8F8001804F0CA000000306030000000000006B", "Mifare1K",
                            PCSC_RUT_ID3_CL1356);
-	register_hardcoded_atr("3B8180018080", "DESFire");
-	register_hardcoded_atr("3B86800106757781028000", "DESFire");
-	register_hardcoded_atr("3BF79100FF918171FE40004120001177818040", "DESFire");
-	register_hardcoded_atr("3BF59100FF918171FE4000410x0000000005", "MifareUltralight");
-	register_hardcoded_atr("3B8C80010443FD", "FeliCa");
-	register_hardcoded_atr("3B8F80010031B86404B0ECC1739401808290000E", "CPS3");
-	register_hardcoded_atr("3B8F8001804F0CA0000003060B00120000000071", "TagIt");
-	register_hardcoded_atr("3B8F8001804F0CA00000030603F004000000009F", "Topaz");
-	register_hardcoded_atr("3BDF18FF81F1FE43003F03834D494641524520506C75732053414D3B", "SAM_AV2");
-	register_hardcoded_atr("3BDF18FF81F1FE43001F034D494641524520506C75732053414D98", "SAM_AV2");
-	
-	// SEOS or Electronic Passport / Spanish passport (2012)
-	register_hardcoded_atr("3B80800101", "SEOS");
+    register_hardcoded_atr("3B8180018080", "DESFire");
+    register_hardcoded_atr("3B86800106757781028000", "DESFire");
+    register_hardcoded_atr("3BF79100FF918171FE40004120001177818040", "DESFire");
+    register_hardcoded_atr("3BF59100FF918171FE4000410x0000000005", "MifareUltralight");
+    register_hardcoded_atr("3B8C80010443FD", "FeliCa");
+    register_hardcoded_atr("3B8F80010031B86404B0ECC1739401808290000E", "CPS3");
+    register_hardcoded_atr("3B8F8001804F0CA0000003060B00120000000071", "TagIt");
+    register_hardcoded_atr("3B8F8001804F0CA00000030603F004000000009F", "Topaz");
+    register_hardcoded_atr("3BDF18FF81F1FE43003F03834D494641524520506C75732053414D3B",
+                           "SAM_AV2");
+    register_hardcoded_atr("3BDF18FF81F1FE43001F034D494641524520506C75732053414D98",
+                           "SAM_AV2");
+
+    // SEOS or Electronic Passport / Spanish passport (2012)
+    register_hardcoded_atr("3B80800101", "SEOS");
 }
 
 ///
@@ -93,8 +95,8 @@ std::string ATRParser::guessCardType(const std::vector<uint8_t> &atr,
 std::string ATRParser::parse(bool ignore_reader_type,
                              const PCSCReaderUnitType &reader_type) const
 {
-    LOG(INFOS) << "Trying to match ATR " << atr_ << " ("
-               << BufferHelper::getHex(atr_) << ") to a card type.";
+    LOG(INFOS) << "Trying to match ATR " << atr_ << " (" << BufferHelper::getHex(atr_)
+               << ") to a card type.";
     auto atr = check_hardcoded(ignore_reader_type, reader_type);
     if (atr != "UNKNOWN")
         return atr;
@@ -138,8 +140,8 @@ std::string ATRParser::atr_x_to_type(uint8_t code) const
         return "MifareMini";
     case 0x2F:
         return "Topaz"; // Jewel
-	case 0x30:
-		return "Topaz";
+    case 0x30:
+        return "Topaz";
     case 0x35:
         return "iCode2";
     case 0x36:
@@ -155,7 +157,7 @@ std::string ATRParser::atr_x_to_type(uint8_t code) const
     case 0x3B:
         return "FeliCa";
     }
-	return "UNKNOWN";
+    return "UNKNOWN";
 }
 
 ///
@@ -197,8 +199,7 @@ std::string ATRParser::check_hardcoded(bool ignore_reader_type,
                 return atr_info.second.card_type;
             // Try to match the reader type.
             if (readers.empty() ||
-                std::find(readers.begin(), readers.end(), reader_type) !=
-                    readers.end())
+                std::find(readers.begin(), readers.end(), reader_type) != readers.end())
             {
                 return atr_info.second.card_type;
             }
@@ -214,15 +215,15 @@ std::string ATRParser::check_from_atr() const
 
     if (atr && (atrlen > 0))
     {
-		if (atrlen == 7)
-		{
-			unsigned char atrTopaz[] = { 0x3b, 0x82, 0x80,
-				0x01, 0x02, 0x44 };	// Don't check last byte
-			if (!memcmp(atr, atrTopaz, sizeof(atrTopaz)))
-			{
-				return "Topaz";
-			}
-		}
+        if (atrlen == 7)
+        {
+            unsigned char atrTopaz[] = {0x3b, 0x82, 0x80,
+                                        0x01, 0x02, 0x44}; // Don't check last byte
+            if (!memcmp(atr, atrTopaz, sizeof(atrTopaz)))
+            {
+                return "Topaz";
+            }
+        }
         else if (atrlen == 17)
         {
             if ((atr[1] == 0x0F) && (atr[2] == 0xFF))
@@ -242,11 +243,11 @@ std::string ATRParser::check_from_atr() const
                 }
             }
         }
-        else  if (atrlen == 20)
+        else if (atrlen == 20)
         {
-			unsigned char eatr[20] = { 0x3B, 0x8F, 0x80, 0x01, 0x80, 0x4F, 0x0C,
-				0xA0, 0x00, 0x00, 0x03, 0x06, 0xFF, 0x00,
-				0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF };
+            unsigned char eatr[20] = {0x3B, 0x8F, 0x80, 0x01, 0x80, 0x4F, 0x0C,
+                                      0xA0, 0x00, 0x00, 0x03, 0x06, 0xFF, 0x00,
+                                      0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF};
 
             memcpy(eatr + 12, atr + 12, 3);
             eatr[19] = atr[19];
@@ -270,9 +271,8 @@ std::string ATRParser::check_generic_from_atr() const
     size_t atrlen      = atr_.size();
     const uint8_t *atr = &atr_[0];
 
-    EXCEPTION_ASSERT_WITH_LOG(
-        atrlen >= 2, LibLogicalAccessException,
-        "The ATR length must be at least 2 bytes long (TS + T0).");
+    EXCEPTION_ASSERT_WITH_LOG(atrlen >= 2, LibLogicalAccessException,
+                              "The ATR length must be at least 2 bytes long (TS + T0).");
     std::string cardType = "UNKNOWN";
 
     // Check ATR according to PC/SC part3

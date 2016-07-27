@@ -13,151 +13,153 @@
 
 namespace logicalaccess
 {
-    /**
-     * \brief Format information for a card type.
-     */
-    struct FormatInfos
+/**
+ * \brief Format information for a card type.
+ */
+struct FormatInfos
+{
+    std::shared_ptr<Format> format;        /**< \brief Format information. */
+    std::shared_ptr<Location> location;    /**< \brief Location information. */
+    std::shared_ptr<AccessInfo> aiToUse;   /**< \brief Access information to use. */
+    std::shared_ptr<AccessInfo> aiToWrite; /**< \brief Access information to write. */
+
+    FormatInfos()
     {
-        std::shared_ptr<Format> format; /**< \brief Format information. */
-        std::shared_ptr<Location> location; /**< \brief Location information. */
-        std::shared_ptr<AccessInfo> aiToUse; /**< \brief Access information to use. */
-        std::shared_ptr<AccessInfo> aiToWrite; /**< \brief Access information to write. */
+    }
+};
 
-        FormatInfos()
-        {
-        }
-    };
+/**
+ * \brief A format infos map.
+ */
+typedef std::map<std::string, FormatInfos> FormatInfosList;
+
+/**
+ * \brief A format infos pair.
+ */
+typedef std::pair<std::string, FormatInfos> FormatInfosPair;
+
+/**
+ * \brief A card type list.
+ */
+typedef std::vector<std::string> CardTypeList;
+
+/**
+ * \brief A Cards format composite class.
+ */
+class LIBLOGICALACCESS_API CardsFormatComposite : public XmlSerializable
+{
+  public:
+    using XmlSerializable::serialize;
+    using XmlSerializable::unSerialize;
 
     /**
-     * \brief A format infos map.
+     * \brief Constructor.
      */
-    typedef std::map<std::string, FormatInfos> FormatInfosList;
+    CardsFormatComposite();
 
     /**
-     * \brief A format infos pair.
+     * \brief Destructor.
      */
-    typedef std::pair<std::string, FormatInfos> FormatInfosPair;
+    virtual ~CardsFormatComposite();
 
     /**
-     * \brief A card type list.
+     * \brief Create a format instance from Xml string.
+     * \param xmlstring The Xml string.
+     * \param rootNode The root node.
+     * \return The format instance.
      */
-    typedef std::vector<std::string> CardTypeList;
+    std::shared_ptr<Format> createFormatFromXml(const std::string &xmlstring,
+                                                const std::string &rootNode);
 
     /**
-     * \brief A Cards format composite class.
+     * \brief Add a format for a card type.
+     * \param type The card type.
+     * \param format The format.
+     * \param location The format location.
+     * \param aiToUse The format access information.
+     * \param aiToWrite The format access information to write in write mode.
      */
-    class LIBLOGICALACCESS_API CardsFormatComposite : public XmlSerializable
-    {
-    public:
-        using XmlSerializable::serialize;
-        using XmlSerializable::unSerialize;
+    void addFormatForCard(
+        std::string type, std::shared_ptr<Format> format,
+        std::shared_ptr<Location> location, std::shared_ptr<AccessInfo> aiToUse,
+        std::shared_ptr<AccessInfo> aiToWrite = std::shared_ptr<AccessInfo>());
 
-        /**
-         * \brief Constructor.
-         */
-        CardsFormatComposite();
+    /**
+     * \brief Retrieve format information for a card type.
+     * \param type The card type.
+     * \param format The format.
+     * \param location The format location.
+     * \param aiToUse The format access information.
+     * \param aiToWrite The format access information to write in write mode.
+     */
+    void retrieveFormatForCard(std::string type, std::shared_ptr<Format> *format,
+                               std::shared_ptr<Location> *location,
+                               std::shared_ptr<AccessInfo> *aiToUse,
+                               std::shared_ptr<AccessInfo> *aiToWrite = NULL);
 
-        /**
-         * \brief Destructor.
-         */
-        virtual ~CardsFormatComposite();
+    /**
+     * \brief Remove a format for a card type.
+     * \param type The card type.
+     */
+    void removeFormatForCard(std::string type);
 
-        /**
-         * \brief Create a format instance from Xml string.
-         * \param xmlstring The Xml string.
-         * \param rootNode The root node.
-         * \return The format instance.
-         */
-        std::shared_ptr<Format> createFormatFromXml(const std::string& xmlstring, const std::string& rootNode);
+    /**
+     * \brief Get configured card type.
+     * \return The configured card type list.
+     */
+    CardTypeList getConfiguredCardTypes();
 
-        /**
-         * \brief Add a format for a card type.
-         * \param type The card type.
-         * \param format The format.
-         * \param location The format location.
-         * \param aiToUse The format access information.
-         * \param aiToWrite The format access information to write in write mode.
-         */
-        void addFormatForCard(std::string type, std::shared_ptr<Format> format,
-                              std::shared_ptr<Location> location, std::shared_ptr<AccessInfo> aiToUse,
-                              std::shared_ptr<AccessInfo> aiToWrite = std::shared_ptr<AccessInfo>());
+    /**
+     * \brief Read format from a card.
+     * \return The format.
+     */
+    std::shared_ptr<Format> readFormat();
 
-        /**
-         * \brief Retrieve format information for a card type.
-         * \param type The card type.
-         * \param format The format.
-         * \param location The format location.
-         * \param aiToUse The format access information.
-         * \param aiToWrite The format access information to write in write mode.
-         */
-        void retrieveFormatForCard(std::string type, std::shared_ptr<Format>* format,
-                                   std::shared_ptr<Location>* location, std::shared_ptr<AccessInfo>* aiToUse,
-                                   std::shared_ptr<AccessInfo>* aiToWrite = NULL);
+    /**
+     * \brief Read format from a card.
+     * \param chip The chip object.
+     * \return The format.
+     */
+    std::shared_ptr<Format> readFormat(std::shared_ptr<Chip> chip);
 
-        /**
-         * \brief Remove a format for a card type.
-         * \param type The card type.
-         */
-        void removeFormatForCard(std::string type);
+    /**
+     * \brief Serialize the current object to XML.
+     * \param parentNode The parent node.
+     */
+    virtual void serialize(boost::property_tree::ptree &parentNode) override;
 
-        /**
-         * \brief Get configured card type.
-         * \return The configured card type list.
-         */
-        CardTypeList getConfiguredCardTypes();
+    /**
+     * \brief UnSerialize a XML node to the current object.
+     * \param node The XML node.
+     */
+    virtual void unSerialize(boost::property_tree::ptree &node) override;
 
-        /**
-         * \brief Read format from a card.
-         * \return The format.
-         */
-        std::shared_ptr<Format> readFormat();
+    /**
+     * \brief Get the default Xml Node name for this object.
+     * \return The Xml node name.
+     */
+    virtual std::string getDefaultXmlNodeName() const override;
 
-        /**
-         * \brief Read format from a card.
-         * \param chip The chip object.
-         * \return The format.
-         */
-        std::shared_ptr<Format> readFormat(std::shared_ptr<Chip> chip);
+    /**
+     * \brief Get the reader unit.
+     * \return The reader unit.
+     */
+    std::shared_ptr<ReaderUnit> getReaderUnit() const;
 
-        /**
-         * \brief Serialize the current object to XML.
-         * \param parentNode The parent node.
-         */
-        virtual void serialize(boost::property_tree::ptree& parentNode) override;
+    /*
+     * \brief Set the reader unit.
+     * \param unit The reader unit.
+     */
+    void setReaderUnit(std::weak_ptr<ReaderUnit> unit);
 
-        /**
-         * \brief UnSerialize a XML node to the current object.
-         * \param node The XML node.
-         */
-        virtual void unSerialize(boost::property_tree::ptree& node) override;
+  protected:
+    FormatInfosList formatsList; /**< \brief The configured formats' list */
 
-        /**
-         * \brief Get the default Xml Node name for this object.
-         * \return The Xml node name.
-         */
-        virtual std::string getDefaultXmlNodeName() const override;
-
-        /**
-         * \brief Get the reader unit.
-         * \return The reader unit.
-         */
-        std::shared_ptr<ReaderUnit> getReaderUnit() const;
-
-        /*
-         * \brief Set the reader unit.
-         * \param unit The reader unit.
-         */
-        void setReaderUnit(std::weak_ptr<ReaderUnit> unit);
-
-    protected:
-
-        FormatInfosList formatsList;	/**< \brief The configured formats' list */
-
-        /**
-         * \brief The reader unit.
-         */
-        std::weak_ptr<ReaderUnit> d_ReaderUnit;
-    };
+    /**
+     * \brief The reader unit.
+     */
+    std::weak_ptr<ReaderUnit> d_ReaderUnit;
+};
 }
 
 #endif /* LOGICALACCESS_CARDSFORMATCOMPOSITE_HPP */

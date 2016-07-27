@@ -13,31 +13,33 @@
 
 namespace logicalaccess
 {
+/**
+* \brief The Mifare Classic NFC Tag storage card service base class.
+*/
+class LIBLOGICALACCESS_API MifareNFCTagCardService : public NFCTagCardService
+{
+  public:
     /**
-    * \brief The Mifare Classic NFC Tag storage card service base class.
+    * \brief Constructor.
+    * \param chip The chip.
     */
-    class LIBLOGICALACCESS_API MifareNFCTagCardService : public NFCTagCardService
+    MifareNFCTagCardService(std::shared_ptr<Chip> chip)
+        : NFCTagCardService(chip){};
+
+    virtual ~MifareNFCTagCardService(){};
+
+    virtual std::shared_ptr<logicalaccess::NdefMessage> readNDEF();
+
+    virtual void writeNDEF(std::shared_ptr<logicalaccess::NdefMessage> records);
+
+    virtual void eraseNDEF();
+
+  protected:
+    std::shared_ptr<MifareChip> getMifareChip()
     {
-    public:
-
-        /**
-        * \brief Constructor.
-        * \param chip The chip.
-        */
-        MifareNFCTagCardService(std::shared_ptr<Chip> chip) : NFCTagCardService(chip) {};
-
-        virtual ~MifareNFCTagCardService() {};
-
-        virtual std::shared_ptr<logicalaccess::NdefMessage> readNDEF();
-
-        virtual void writeNDEF(std::shared_ptr<logicalaccess::NdefMessage> records);
-
-        virtual void eraseNDEF();
-
-    protected:
-
-        std::shared_ptr<MifareChip> getMifareChip() { return std::dynamic_pointer_cast<MifareChip>(getChip()); };
+        return std::dynamic_pointer_cast<MifareChip>(getChip());
     };
+};
 }
 
 #endif /* LOGICALACCESS_MIFARENFCTAGCARDSERVICE_HPP */

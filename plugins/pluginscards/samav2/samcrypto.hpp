@@ -21,28 +21,33 @@
 
 namespace logicalaccess
 {
+/**
+ * \brief SAM cryptographic functions.
+ */
+class LIBLOGICALACCESS_API SAMDESfireCrypto : public DESFireCrypto
+{
+  public:
     /**
-     * \brief SAM cryptographic functions.
+     * \brief Constructor
      */
-    class LIBLOGICALACCESS_API SAMDESfireCrypto : public DESFireCrypto
-    {
-    public:
-        /**
-         * \brief Constructor
-         */
-        SAMDESfireCrypto();
+    SAMDESfireCrypto();
 
-        /**
-         * \brief Destructor
-         */
-        virtual ~SAMDESfireCrypto();
+    /**
+     * \brief Destructor
+     */
+    virtual ~SAMDESfireCrypto();
 
-        std::vector<unsigned char> authenticateHostP1(std::shared_ptr<DESFireKey> key, std::vector<unsigned char> encRndB, unsigned char keyno);
+    std::vector<unsigned char> authenticateHostP1(std::shared_ptr<DESFireKey> key,
+                                                  std::vector<unsigned char> encRndB,
+                                                  unsigned char keyno);
 
-        void authenticateHostP2(unsigned char keyno, std::vector<unsigned char> encRndA1, std::shared_ptr<DESFireKey> key);
+    void authenticateHostP2(unsigned char keyno, std::vector<unsigned char> encRndA1,
+                            std::shared_ptr<DESFireKey> key);
 
-        std::vector<unsigned char> sam_crc_encrypt(std::vector<unsigned char> d_sessionKey, std::vector<unsigned char> vectordata, std::shared_ptr<DESFireKey> key);
-    };
+    std::vector<unsigned char> sam_crc_encrypt(std::vector<unsigned char> d_sessionKey,
+                                               std::vector<unsigned char> vectordata,
+                                               std::shared_ptr<DESFireKey> key);
+};
 }
 
 #endif

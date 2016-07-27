@@ -25,13 +25,14 @@ MifareSpringCardCommands::~MifareSpringCardCommands()
 {
 }
 
-bool MifareSpringCardCommands::loadKey(unsigned char keyno,
-                                       MifareKeyType keytype, std::shared_ptr<MifareKey> key, bool vol)
+bool MifareSpringCardCommands::loadKey(unsigned char keyno, MifareKeyType keytype,
+                                       std::shared_ptr<MifareKey> key, bool vol)
 {
     bool r = false;
 
     std::vector<unsigned char> result,
-		vector_key((unsigned char *)key->getData(), (unsigned char *)key->getData() + key->getLength());
+        vector_key((unsigned char *)key->getData(),
+                   (unsigned char *)key->getData() + key->getLength());
 
     unsigned char keyindex = 0x00;
     if (keytype == KT_KEY_B)
@@ -40,8 +41,8 @@ bool MifareSpringCardCommands::loadKey(unsigned char keyno,
     }
 
     result = getPCSCReaderCardAdapter()->sendAPDUCommand(
-        0xFF, 0x82, 0x00, keyindex,
-        static_cast<unsigned char>(vector_key.size()), vector_key);
+        0xFF, 0x82, 0x00, keyindex, static_cast<unsigned char>(vector_key.size()),
+        vector_key);
 
     if (!vol && (result[result.size() - 2] == 0x63) &&
         (result[result.size() - 1] == 0x86))
@@ -59,8 +60,7 @@ bool MifareSpringCardCommands::loadKey(unsigned char keyno,
     return r;
 }
 
-void MifareSpringCardCommands::authenticate(unsigned char blockno,
-                                            unsigned char keyno,
+void MifareSpringCardCommands::authenticate(unsigned char blockno, unsigned char keyno,
                                             MifareKeyType keytype)
 {
     std::vector<unsigned char> command;
@@ -78,8 +78,7 @@ void MifareSpringCardCommands::authenticate(unsigned char blockno,
     command.push_back(keyindex);
 
     getPCSCReaderCardAdapter()->sendAPDUCommand(
-        0xFF, 0x86, 0x00, 0x00, static_cast<unsigned char>(command.size()),
-        command);
+        0xFF, 0x86, 0x00, 0x00, static_cast<unsigned char>(command.size()), command);
 }
 
 void MifareSpringCardCommands::restore(unsigned char blockno)

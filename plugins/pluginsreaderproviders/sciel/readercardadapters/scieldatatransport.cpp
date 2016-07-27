@@ -10,15 +10,16 @@
 
 namespace logicalaccess
 {
-    std::vector<unsigned char> ScielDataTransport::checkValideBufferAvailable()
-    {
-        std::vector<unsigned char> ret;
+std::vector<unsigned char> ScielDataTransport::checkValideBufferAvailable()
+{
+    std::vector<unsigned char> ret;
 
-        d_port->getSerialPort()->lockedExecute([&](){
-            if (d_port->getSerialPort()->getCircularBufferParser())
-                ret = d_port->getSerialPort()->getCircularBufferParser()->getValidBuffer(d_port->getSerialPort()->getCircularReadBuffer());
-        });
-        LOG(LogLevel::COMS) << "checkValideBufferAvailable: " << BufferHelper::getHex(ret);
-        return ret;
-    }
+    d_port->getSerialPort()->lockedExecute([&]() {
+        if (d_port->getSerialPort()->getCircularBufferParser())
+            ret = d_port->getSerialPort()->getCircularBufferParser()->getValidBuffer(
+                d_port->getSerialPort()->getCircularReadBuffer());
+    });
+    LOG(LogLevel::COMS) << "checkValideBufferAvailable: " << BufferHelper::getHex(ret);
+    return ret;
+}
 }

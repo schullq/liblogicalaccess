@@ -13,106 +13,124 @@
 
 namespace logicalaccess
 {
-    BigEndianDataRepresentation::BigEndianDataRepresentation()
-    {
-    }
+BigEndianDataRepresentation::BigEndianDataRepresentation()
+{
+}
 
-    BigEndianDataRepresentation::~BigEndianDataRepresentation()
-    {
-    }
+BigEndianDataRepresentation::~BigEndianDataRepresentation()
+{
+}
 
-    string BigEndianDataRepresentation::getName() const
-    {
-        return string("Big Endian");
-    }
+string BigEndianDataRepresentation::getName() const
+{
+    return string("Big Endian");
+}
 
-    EncodingType BigEndianDataRepresentation::getType() const
-    {
-        return ET_BIGENDIAN;
-    }
+EncodingType BigEndianDataRepresentation::getType() const
+{
+    return ET_BIGENDIAN;
+}
 
-    unsigned int BigEndianDataRepresentation::convertNumeric(const void* data, size_t dataLengthBytes, unsigned int dataLengthBits, void* convertedData, size_t convertedLengthBytes)
-    {
-        unsigned int ret = 0;
-
-#if __BYTE_ORDER != __LITTLE_ENDIAN
-
-        if (convertedLengthBytes >= dataLengthBytes)
-        {
-            memset(convertedData, 0x00, convertedLengthBytes);
-            memcpy(convertedData, data, dataLengthBytes);
-        }
-        ret = dataLengthBits;
-
-#else
-
-        if (convertedData != NULL)
-        {
-            BitHelper::swapBytes(convertedData, convertedLengthBytes, data, dataLengthBytes, dataLengthBits);
-        }
-        ret = dataLengthBits;
-
-#endif
-
-        return ret;
-    }
-
-    unsigned int BigEndianDataRepresentation::convertBinary(const void* data, size_t dataLengthBytes, unsigned int dataLengthBits, void* convertedData, size_t convertedLengthBytes)
-    {
-        unsigned int ret = 0;
-
-        if (convertedLengthBytes >= dataLengthBytes)
-        {
-            memset(convertedData, 0x00, convertedLengthBytes);
-            memcpy(convertedData, data, dataLengthBytes);
-        }
-        ret = dataLengthBits;
-
-        return ret;
-    }
-
-    unsigned int BigEndianDataRepresentation::convertLength(unsigned int lengthBits)
-    {
-        return lengthBits;
-    }
-
-    unsigned int BigEndianDataRepresentation::revertNumeric(const void* data, size_t dataLengthBytes, unsigned int dataLengthBits, void* convertedData, size_t convertedLengthBytes)
-    {
-        unsigned int ret = 0;
+unsigned int BigEndianDataRepresentation::convertNumeric(const void *data,
+                                                         size_t dataLengthBytes,
+                                                         unsigned int dataLengthBits,
+                                                         void *convertedData,
+                                                         size_t convertedLengthBytes)
+{
+    unsigned int ret = 0;
 
 #if __BYTE_ORDER != __LITTLE_ENDIAN
 
-        if (convertedLengthBytes >= dataLengthBytes)
-        {
-            memset(convertedData, 0x00, convertedLengthBytes);
-            memcpy(convertedData, data, dataLengthBytes);
-        }
-        ret = dataLengthBits;
+    if (convertedLengthBytes >= dataLengthBytes)
+    {
+        memset(convertedData, 0x00, convertedLengthBytes);
+        memcpy(convertedData, data, dataLengthBytes);
+    }
+    ret = dataLengthBits;
 
 #else
 
-        if (convertedData != NULL)
-        {
-            BitHelper::swapBytes(convertedData, convertedLengthBytes, data, dataLengthBytes, dataLengthBits);
-        }
-        ret = dataLengthBits;
+    if (convertedData != NULL)
+    {
+        BitHelper::swapBytes(convertedData, convertedLengthBytes, data, dataLengthBytes,
+                             dataLengthBits);
+    }
+    ret = dataLengthBits;
 
 #endif
 
-        return ret;
-    }
+    return ret;
+}
 
-    unsigned int BigEndianDataRepresentation::revertBinary(const void* data, size_t dataLengthBytes, unsigned int dataLengthBits, void* convertedData, size_t convertedLengthBytes)
+unsigned int BigEndianDataRepresentation::convertBinary(const void *data,
+                                                        size_t dataLengthBytes,
+                                                        unsigned int dataLengthBits,
+                                                        void *convertedData,
+                                                        size_t convertedLengthBytes)
+{
+    unsigned int ret = 0;
+
+    if (convertedLengthBytes >= dataLengthBytes)
     {
-        unsigned int ret = 0;
-
-        if (convertedLengthBytes >= dataLengthBytes)
-        {
-            memset(convertedData, 0x00, convertedLengthBytes);
-            memcpy(convertedData, data, dataLengthBytes);
-        }
-        ret = dataLengthBits;
-
-        return ret;
+        memset(convertedData, 0x00, convertedLengthBytes);
+        memcpy(convertedData, data, dataLengthBytes);
     }
+    ret = dataLengthBits;
+
+    return ret;
+}
+
+unsigned int BigEndianDataRepresentation::convertLength(unsigned int lengthBits)
+{
+    return lengthBits;
+}
+
+unsigned int BigEndianDataRepresentation::revertNumeric(const void *data,
+                                                        size_t dataLengthBytes,
+                                                        unsigned int dataLengthBits,
+                                                        void *convertedData,
+                                                        size_t convertedLengthBytes)
+{
+    unsigned int ret = 0;
+
+#if __BYTE_ORDER != __LITTLE_ENDIAN
+
+    if (convertedLengthBytes >= dataLengthBytes)
+    {
+        memset(convertedData, 0x00, convertedLengthBytes);
+        memcpy(convertedData, data, dataLengthBytes);
+    }
+    ret = dataLengthBits;
+
+#else
+
+    if (convertedData != NULL)
+    {
+        BitHelper::swapBytes(convertedData, convertedLengthBytes, data, dataLengthBytes,
+                             dataLengthBits);
+    }
+    ret = dataLengthBits;
+
+#endif
+
+    return ret;
+}
+
+unsigned int BigEndianDataRepresentation::revertBinary(const void *data,
+                                                       size_t dataLengthBytes,
+                                                       unsigned int dataLengthBits,
+                                                       void *convertedData,
+                                                       size_t convertedLengthBytes)
+{
+    unsigned int ret = 0;
+
+    if (convertedLengthBytes >= dataLengthBytes)
+    {
+        memset(convertedData, 0x00, convertedLengthBytes);
+        memcpy(convertedData, data, dataLengthBytes);
+    }
+    ret = dataLengthBits;
+
+    return ret;
+}
 }

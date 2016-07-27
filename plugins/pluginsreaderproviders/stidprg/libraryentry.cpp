@@ -24,8 +24,7 @@ LIBLOGICALACCESS_API bool getReaderInfoAt(unsigned int index, char *readername,
                                           size_t readernamelen, void **getterfct)
 {
     bool ret = false;
-    if (readername != NULL && readernamelen == PLUGINOBJECT_MAXLEN &&
-        getterfct != NULL)
+    if (readername != NULL && readernamelen == PLUGINOBJECT_MAXLEN && getterfct != NULL)
     {
         switch (index)
         {
@@ -58,17 +57,11 @@ getCardService(std::shared_ptr<logicalaccess::Chip> c,
     // otherwise we cannot create the Service.
     if (!c || !c->getCommands() || !c->getCommands()->getReaderCardAdapter() ||
         !c->getCommands()->getReaderCardAdapter()->getDataTransport() ||
-        !c->getCommands()
-             ->getReaderCardAdapter()
-             ->getDataTransport()
-             ->getReaderUnit())
+        !c->getCommands()->getReaderCardAdapter()->getDataTransport()->getReaderUnit())
     {
         return;
     }
-    ru = c->getCommands()
-             ->getReaderCardAdapter()
-             ->getDataTransport()
-             ->getReaderUnit();
+    ru = c->getCommands()->getReaderCardAdapter()->getDataTransport()->getReaderUnit();
     if (c->getCardType() == "Prox" &&
         std::dynamic_pointer_cast<logicalaccess::STidPRGReaderUnit>(ru))
     {

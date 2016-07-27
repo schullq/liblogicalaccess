@@ -18,14 +18,12 @@ bool MifarePlusACSACR1222L_SL1Commands::AESAuthenticate(
     return MifarePlusSL1Commands::AESAuthenticate(key, keyslot);
 }
 
-MifarePlusACSACR1222L_SL1Commands::GenericSessionGuard::GenericSessionGuard(
-    Commands *cmd)
+MifarePlusACSACR1222L_SL1Commands::GenericSessionGuard::GenericSessionGuard(Commands *cmd)
     : cmd_(cmd)
 {
     // The reader card adapter shall be a PCSCReaderCardAdapter, because this
     // generic guard is only for PCSC command (and only for XX21).
-    rca_ = std::dynamic_pointer_cast<PCSCReaderCardAdapter>(
-        cmd_->getReaderCardAdapter());
+    rca_ = std::dynamic_pointer_cast<PCSCReaderCardAdapter>(cmd_->getReaderCardAdapter());
     assert(rca_);
 
     adapter_ = std::make_shared<Adapter>();
@@ -33,13 +31,13 @@ MifarePlusACSACR1222L_SL1Commands::GenericSessionGuard::GenericSessionGuard(
     adapter_->setResultChecker(rca_->getResultChecker());
     cmd->setReaderCardAdapter(adapter_);
 
-    //rca_->sendAPDUCommand(0xFF, 0xA0, 0x00, 0x07, 0x03, {0x01, 0x00, 0x01});
+    // rca_->sendAPDUCommand(0xFF, 0xA0, 0x00, 0x07, 0x03, {0x01, 0x00, 0x01});
 }
 
 MifarePlusACSACR1222L_SL1Commands::GenericSessionGuard::~GenericSessionGuard()
 {
     cmd_->setReaderCardAdapter(rca_);
-    //rca_->sendAPDUCommand(0xFF, 0xA0, 0x00, 0x07, 0x03, {0x01, 0x00, 0x02});
+    // rca_->sendAPDUCommand(0xFF, 0xA0, 0x00, 0x07, 0x03, {0x01, 0x00, 0x02});
 }
 
 std::vector<unsigned char>
@@ -49,12 +47,11 @@ MifarePlusACSACR1222L_SL1Commands::GenericSessionGuard::Adapter::adaptCommand(
     ByteVector full_cmd;
 
     // We have to build the full PCSC Command.
-    ByteVector pcsc_header = {0xE0, 0x00, 0x00, 0x24,
-                              static_cast<uint8_t>(in.size())};
+    ByteVector pcsc_header = {0xE0, 0x00, 0x00, 0x24, static_cast<uint8_t>(in.size())};
 
     full_cmd.insert(full_cmd.begin(), pcsc_header.begin(), pcsc_header.end());
     full_cmd.insert(full_cmd.end(), in.begin(), in.end());
-    //full_cmd.push_back(0);
+    // full_cmd.push_back(0);
 
     return full_cmd;
 }
@@ -63,8 +60,8 @@ std::vector<unsigned char>
 MifarePlusACSACR1222L_SL1Commands::GenericSessionGuard::Adapter::adaptAnswer(
     const std::vector<unsigned char> &answer)
 {
-	LLA_LOG_CTX("ADAPTER");
-	LOG(DEBUGS) << "BEFORE ADAPTING: " << answer;
+    LLA_LOG_CTX("ADAPTER");
+    LOG(DEBUGS) << "BEFORE ADAPTING: " << answer;
     ByteVector ret(answer.begin() + 2, answer.end());
     return ret;
 }

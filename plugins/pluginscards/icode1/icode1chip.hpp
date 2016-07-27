@@ -15,33 +15,32 @@
 
 namespace logicalaccess
 {
-#define CHIP_ICODE1		"iCode1"
+#define CHIP_ICODE1 "iCode1"
+
+/**
+ * \brief The iCode1 base chip class.
+ */
+class LIBLOGICALACCESS_API ICode1Chip : public ISO15693Chip
+{
+  public:
+    /**
+     * \brief Constructor.
+     */
+    ICode1Chip();
 
     /**
-     * \brief The iCode1 base chip class.
+     * \brief Destructor.
      */
-    class LIBLOGICALACCESS_API ICode1Chip : public ISO15693Chip
-    {
-    public:
+    virtual ~ICode1Chip();
 
-        /**
-         * \brief Constructor.
-         */
-        ICode1Chip();
+    /**
+     * \brief Get the root location node.
+     * \return The root location node.
+     */
+    virtual std::shared_ptr<LocationNode> getRootLocationNode();
 
-        /**
-         * \brief Destructor.
-         */
-        virtual ~ICode1Chip();
-
-        /**
-         * \brief Get the root location node.
-         * \return The root location node.
-         */
-        virtual std::shared_ptr<LocationNode> getRootLocationNode();
-
-    protected:
-    };
+  protected:
+};
 }
 
 #endif

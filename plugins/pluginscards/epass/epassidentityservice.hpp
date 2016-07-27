@@ -12,9 +12,9 @@ class EPassIdentityService : public IdentityCardService
   public:
     EPassIdentityService(const std::shared_ptr<Chip> &chip);
 
-	virtual std::chrono::system_clock::time_point getTime(MetaData what) override;
-	virtual std::string getString(MetaData what) override;
-	virtual ByteVector getData(MetaData what) override;
+    virtual std::chrono::system_clock::time_point getTime(MetaData what) override;
+    virtual std::string getString(MetaData what) override;
+    virtual ByteVector getData(MetaData what) override;
 
 
   protected:

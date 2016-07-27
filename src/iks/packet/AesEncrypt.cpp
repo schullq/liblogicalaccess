@@ -43,8 +43,7 @@ size_t AesEncryptCommand::binary_size_impl() const
     return sizeof(uint16_t) + 16 + payload_.size() + key_name_.size() + 1 + 1;
 }
 
-AesEncryptResponse::AesEncryptResponse(uint16_t status,
-                                       const std::vector<uint8_t> &data)
+AesEncryptResponse::AesEncryptResponse(uint16_t status, const std::vector<uint8_t> &data)
     : BaseResponse(SMSG_OP_AES_ENCRYPT, status)
     , bytes_(data)
 {

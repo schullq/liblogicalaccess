@@ -11,39 +11,39 @@
 namespace logicalaccess
 {
 
-    class LIBLOGICALACCESS_API MifarePlusSL0Chip : public MifarePlusChip
+class LIBLOGICALACCESS_API MifarePlusSL0Chip : public MifarePlusChip
+{
+  public:
+    MifarePlusSL0Chip(const std::string &cardType)
+        : MifarePlusChip(cardType)
     {
-      public:
-        MifarePlusSL0Chip(const std::string &cardType)
-            : MifarePlusChip(cardType)
-        {
-        }
+    }
 
-        virtual int getSecurityLevel() const override
-        {
-            return 0;
-        };
-    };
-
-    class MifarePlusSL0_2kChip : public MifarePlusSL0Chip
+    virtual int getSecurityLevel() const override
     {
-      public:
-        MifarePlusSL0_2kChip()
-            : Chip("MifarePlus_SL0_2K")
-            , MifarePlusSL0Chip("MifarePlus_SL0_2K")
-        {
-        }
+        return 0;
     };
+};
 
-    class MifarePlusSL0_4kChip : public MifarePlusSL0Chip
+class MifarePlusSL0_2kChip : public MifarePlusSL0Chip
+{
+  public:
+    MifarePlusSL0_2kChip()
+        : Chip("MifarePlus_SL0_2K")
+        , MifarePlusSL0Chip("MifarePlus_SL0_2K")
     {
-      public:
-        MifarePlusSL0_4kChip()
-            : Chip("MifarePlus_SL0_4K")
-            , MifarePlusSL0Chip("MifarePlus_SL0_4K")
-        {
-        }
-    };
+    }
+};
+
+class MifarePlusSL0_4kChip : public MifarePlusSL0Chip
+{
+  public:
+    MifarePlusSL0_4kChip()
+        : Chip("MifarePlus_SL0_4K")
+        , MifarePlusSL0Chip("MifarePlus_SL0_4K")
+    {
+    }
+};
 }
 
 #endif // LIBLOGICALACCESS_MIFAREPLUSSL0CHIP_HPP

@@ -11,57 +11,60 @@
 #define LIBLOGICALACCESS_API
 #endif
 #ifndef DISABLE_PRAGMA_WARNING
-#define DISABLE_PRAGMA_WARNING /**< \brief winsmcrd.h was modified to support this macro, to avoid MSVC specific warnings pragma */
+#define DISABLE_PRAGMA_WARNING /**< \brief winsmcrd.h was modified to support this       \
+                                  macro, to avoid MSVC specific warnings pragma */
 #endif
 #endif
 
-extern "C"
+extern "C" {
+LIBLOGICALACCESS_API char *getLibraryName()
 {
-    LIBLOGICALACCESS_API char *getLibraryName()
-    {
-        return (char *)"SAM";
-    }
+    return (char *)"SAM";
+}
 
-    LIBLOGICALACCESS_API void getSAM_AV1Chip(std::shared_ptr<logicalaccess::Chip>* chip)
+LIBLOGICALACCESS_API void getSAM_AV1Chip(std::shared_ptr<logicalaccess::Chip> *chip)
+{
+    if (chip != NULL)
     {
-        if (chip != NULL)
+        *chip =
+            std::shared_ptr<logicalaccess::SAMAV1Chip>(new logicalaccess::SAMAV1Chip());
+    }
+}
+
+LIBLOGICALACCESS_API void getSAM_AV2Chip(std::shared_ptr<logicalaccess::Chip> *chip)
+{
+    if (chip != NULL)
+    {
+        *chip =
+            std::shared_ptr<logicalaccess::SAMAV2Chip>(new logicalaccess::SAMAV2Chip());
+    }
+}
+
+LIBLOGICALACCESS_API bool getChipInfoAt(unsigned int index, char *chipname,
+                                        size_t chipnamelen, void **getterfct)
+{
+    bool ret = false;
+    if (chipname != NULL && chipnamelen == PLUGINOBJECT_MAXLEN && getterfct != NULL)
+    {
+        switch (index)
         {
-            *chip = std::shared_ptr<logicalaccess::SAMAV1Chip>(new logicalaccess::SAMAV1Chip());
+        case 0:
+        {
+            *getterfct = (void *)&getSAM_AV1Chip;
+            sprintf(chipname, CHIP_SAMAV1);
+            ret = true;
+        }
+        break;
+        case 1:
+        {
+            *getterfct = (void *)&getSAM_AV2Chip;
+            sprintf(chipname, CHIP_SAMAV2);
+            ret = true;
+        }
+        break;
         }
     }
 
-    LIBLOGICALACCESS_API void getSAM_AV2Chip(std::shared_ptr<logicalaccess::Chip>* chip)
-    {
-        if (chip != NULL)
-        {
-            *chip = std::shared_ptr<logicalaccess::SAMAV2Chip>(new logicalaccess::SAMAV2Chip());
-        }
-    }
-
-    LIBLOGICALACCESS_API bool getChipInfoAt(unsigned int index, char* chipname, size_t chipnamelen, void** getterfct)
-    {
-        bool ret = false;
-        if (chipname != NULL && chipnamelen == PLUGINOBJECT_MAXLEN && getterfct != NULL)
-        {
-            switch (index)
-            {
-            case 0:
-            {
-                *getterfct = (void*)&getSAM_AV1Chip;
-                sprintf(chipname, CHIP_SAMAV1);
-                ret = true;
-            }
-                break;
-            case 1:
-            {
-                *getterfct = (void*)&getSAM_AV2Chip;
-                sprintf(chipname, CHIP_SAMAV2);
-                ret = true;
-            }
-                break;
-            }
-        }
-
-        return ret;
-    }
+    return ret;
+}
 }
